@@ -1,0 +1,14 @@
+<%- include("./partials/header.ejs")%>
+<div class="container">
+
+    <%ordixy.forEach(function(order){ %>
+                <div class="post">
+                    <h4><%= order.name%></h4>
+                    <h4>Kwota:<%= order.value%></h4>
+
+                    <a href="/orders/<%=order._id%>/">Zobacz szczegoly</a>
+                </div>
+    <%});%>
+</div>
+
+<%- include("./partials/footer.ejs")%>

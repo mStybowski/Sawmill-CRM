@@ -1,0 +1,11 @@
+<%- include("../partials/header.ejs")%>
+<div class="container">
+
+    <%clients.forEach(function(client){ %>
+        <div class="client">
+            <h4><%= client.name%> <%= client.lastName%></h4>
+            <a href="/clients/<%=client._id%>/">Zobacz szczegóły</a>
+        </div>
+    <%});%>
+</div>
+<%- include("../partials/footer.ejs")%>

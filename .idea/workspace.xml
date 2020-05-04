@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="24751351-93bd-4288-aa29-ea210e08a968" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1aae2Cn4LeFDFwbgTlkWsCqif8a" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.16.3" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mstyb\Desktop\Projects\Tartak\views\orders" />
+      <recent name="C:\Users\mstyb\Desktop\Projects\Tartak\views" />
+      <recent name="C:\Users\mstyb\Desktop\Projects\Tartak" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="24751351-93bd-4288-aa29-ea210e08a968" name="Default Changelist" comment="" />
+      <created>1586977922725</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1586977922725</updated>
+      <workItem from="1586977924905" duration="3779000" />
+      <workItem from="1587134475923" duration="1235000" />
+      <workItem from="1588172299512" duration="323000" />
+      <workItem from="1588172629311" duration="345000" />
+      <workItem from="1588172983564" duration="30301000" />
+      <workItem from="1588316952049" duration="7195000" />
+      <workItem from="1588325872158" duration="14561000" />
+      <workItem from="1588361867579" duration="6013000" />
+      <workItem from="1588408703208" duration="10761000" />
+      <workItem from="1588424493292" duration="5181000" />
+      <workItem from="1588449201923" duration="1778000" />
+      <workItem from="1588453293113" duration="63000" />
+      <workItem from="1588492586387" duration="295000" />
+      <workItem from="1588496230215" duration="2314000" />
+      <workItem from="1588499156742" duration="5325000" />
+      <workItem from="1588506686704" duration="2334000" />
+      <workItem from="1588528159866" duration="6464000" />
+      <workItem from="1588537334241" duration="1977000" />
+      <workItem from="1588543579197" duration="1276000" />
+      <workItem from="1588574344068" duration="3616000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="706" y="323" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586980731880">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="706" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1586980731880" />
+    <state x="623" y="225" key="search.everywhere.popup" timestamp="1588409373964">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1588409373964" />
+  </component>
+</project>

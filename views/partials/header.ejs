@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="/css/layout.css" rel="stylesheet" type="text/css">
+    <link href="/css/styles.css" rel="stylesheet" type="text/css">
+    <link href="/css/header.css" rel="stylesheet" type="text/css">
+    <link href="/css/form.css" rel="stylesheet" type="text/css">
+    <link href="/css/hebelSideChoice.css" rel="stylesheet" type="text/css">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rajdhani&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rajdhani|Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+
+    <title>TARTAK - Stybowski</title>
+</head>
+<body>
+<div class="topbar">
+    <nav>
+        <div class="siteLogo">
+            <a  href="/">
+                <div class="smallSiteLogo">
+                    <img src="/images/icons/logo.png" class="smallSiteLogoIcon">
+                    <span class="smallSiteLogoText">Stybowski</span>
+                </div>
+            </a>
+        </div>
+        <div class="options">
+
+            <ul class="navigation">
+                <li><a href="/orders/new">
+                        <div class="topbarLink">
+                            <img src="/images/icons/newOrder.png" class="topbarLinkIcon">
+                            <span class="topbarLinkText">Nowe zamówienie</span>
+                        </div>
+                    </a>
+                </li>
+                <li><a href="/clients">
+                        <div class="topbarLink">
+                            <img src="/images/icons/clients.png" class="topbarLinkIcon">
+                            <span class="topbarLinkText">Kontakty</span>
+                        </div>
+                    </a>
+                </li>
+                <li><a href="/settings">
+                        <div class="topbarLink">
+                            <img src="/images/icons/settings.png" class="topbarLinkIcon">
+                            <span class="topbarLinkText">Panel sterowania</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="AuthBar">
+
+                <% if(currentUser){%>
+                    <li><a href="/profile/<%= currentUser._id%>" >Zalogowano jako <span><%= currentUser.username%></span></a></li>
+                    <li><a href="/logout">Wyloguj</a></li>
+                <%}else{%>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                <%}%>
+
+            </ul>
+        </div>
+
+
+    </nav>
+    <div class="admin">
+        <a href="/settings">
+            <div class="topbarLink">
+                <img src="/images/icons/gear.png" class="topbarLinkIcon">
+            </div>
+        </a>
+    </div>
+</div>
+<div class="container">
+    <div class="flashContainer" >
+        <% if(error && error.length>0){%>
+        <div class="error-flash" role="alert">
+            <%=error%>
+        </div>
+        <%}%>
+        <% if(success && success.length>0){%>
+        <div class="success-flash" role="alert">
+            <%=success%>
+        </div>
+        <%}%>
+
+    </div>
+</div>
+

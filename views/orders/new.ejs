@@ -1,0 +1,97 @@
+<%- include("../partials/header.ejs")%>
+<div class="container">
+    <div class="standaloneForm">
+
+        <div class="formSection">
+            <div class="formSection-top">
+                <h2 class="formSectionHeader">Ceny dla nowego zamówienia</h2><br>
+            </div>
+
+            <div class="formSection-mid" id="priceTag">
+                <div class="priceLabel">
+                    <span>zł/m<sup>3</sup></span>
+                    <input type="text" name="prices[drewno]" class="priceTagInput" value="<%= prices.drewno%>" id="DrewnoPrice" oninput="updatePricesOnPage()">
+
+                    <label>Drewno</label>
+                    <img src="/images/icons/nature.png" class="mediumProductIcon">
+                </div>
+                <div class="priceLabel">
+                    <span>zł/m<sup>3</sup></span>
+                    <input type="text" name="prices[hebel]" class="priceTagInput" value="<%= prices.hebel%>" id="HebelPrice" oninput="updatePricesOnPage()">
+
+                    <label>Heblowanie</label>
+                    <img src="/images/icons/tool.png" class="mediumProductIcon">
+                </div>
+                <div class="priceLabel">
+                    <span>zł/m<sup>3</sup></span>
+                    <input type="text" name="prices[calowka]" class="priceTagInput" value="<%= prices.calowka%>" id="CalowkaPrice" oninput="updatePricesOnPage()">
+                    <label>Calówka</label>
+                    <img src="/images/icons/calowka.png" class="mediumProductIcon">
+                </div>
+                <div class="priceLabel">
+                    <span>zł/m.b.</span>
+                    <input type="text" name="prices[lata]" class="priceTagInput" value="<%= prices.lata%>" id="LataPrice" oninput="updatePricesOnPage()">
+                    <label>Łata</label>
+                    <img src="/images/icons/lata.png" class="mediumProductIcon">
+                </div>
+                <div class="priceLabel">
+                    <span>zł/m.b.</span>
+                    <input type="text" name="prices[kontrlata]" class="priceTagInput" value="<%= prices.kontrlata%>" id="KontrlataPrice" oninput="updatePricesOnPage()">
+                    <label>Kontrłata</label>
+                    <img src="/images/icons/kontrlata.png" class="mediumProductIcon">
+                </div>
+                <div class="priceLabel">
+                    <span>zł/paczka</span>
+                    <input type="text" name="prices[opal]" class="priceTagInput" value="<%= prices.opal%>" id="OpalPrice" oninput="updatePricesOnPage()">
+                    <label>Opał</label>
+                    <img src="/images/icons/opal.png" class="mediumProductIcon">
+                </div>
+
+                <div class="priceLabel">
+                    <span>zł</span>
+                    <input type="text" name="prices[transport]" class="priceTagInput" value="<%= prices.transport%>" id="TransportPrice" oninput="updatePricesOnPage()">
+                    <label>Transport</label>
+                    <img src="/images/icons/transport.png" class="mediumProductIcon">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="standaloneForm">
+        <div class="formSection">
+            <div class="formSection-top">
+                <h2 class="formSectionHeader">Nowe zamówienie</h2><br>
+            </div>
+            <form action="/orders" method="POST">
+                <div class="formSection-mid">
+                    <div id="zamowienie-container">
+
+                    </div>
+                </div>
+
+                <div class="formSection-bottom">
+                    <div class="chooseItem">
+                        <button type="button" id="drewnoKonstrukcyjne-button">Drewno Konstrukcyjne</button>
+                        <button type="button" id="calowka-button">Deska calówka</button>
+                        <button type="button" id="lata-button">Łata</button>
+                        <button type="button" id="kontrlata-button">Kontrłata</button>
+                        <button type="button" id="opal-button">Paczka opału</button>
+                        <button type="button" id="transport-button">Transport</button>
+                    </div>
+                </div>
+
+                <input type="submit">
+            </form>
+        </div>
+    </div>
+
+</div>
+<br><br>
+
+
+
+
+<script src="/js/hebel.js"></script>
+<script src="/js/calculator.js"></script>
+
+
+<%- include("../partials/footer.ejs")%>
