@@ -7,7 +7,7 @@ var Price = require("../models/price");
 var router = express.Router();
 
 router.get("/", middlewareObj.redirectIfNotLoggedIn, function(req, res){
-    Client.find({}, function(err, foundClients){
+    Client.find({}).sort({lastName: 1}).exec(function(err, foundClients){
         if(err){
             req.flash("error", "Nie znaleziono klientów");
             res.redirect("/");

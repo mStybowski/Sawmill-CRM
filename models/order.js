@@ -23,7 +23,7 @@ var OrderSchema = new mongoose.Schema({
             ref: "DeskaCalowka"
         }
     ],
-    client: {
+    customer: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Client"
         }

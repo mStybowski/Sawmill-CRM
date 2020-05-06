@@ -7,6 +7,7 @@ var User = require("../models/user");
 var DrewnoKonstrukcyjne = require("../models/drewnoKonstrukcyjne");
 var DeskaCalowka = require("../models/deskaCalowka");
 var Price = require("../models/price");
+var Client = require("../models/client");
 
 router.get("/", middlewareObj.redirectIfNotLoggedIn, (req, res)=>{
     Order.find({}, function (err, found) {
@@ -91,6 +92,7 @@ router.post("/", middlewareObj.redirectIfNotLoggedIn, function(req, res) {
     var orderValue = 0;
     var newLaty = {};
 
+
     if (req.body.lata != null) {
         newLaty = {
             metryBiezace: req.body.lata.metryBiezace,
@@ -131,30 +133,47 @@ router.post("/", middlewareObj.redirectIfNotLoggedIn, function(req, res) {
     if (req.body.drewno != null) {
         req.body.drewno.forEach(function (elmnt) {
             totalDrewnoValue += Number(elmnt.value);
+            elmnt.v = elmnt.x*elmnt.y*elmnt.length*elmnt.amount;
         });
 
     }
     if (req.body.calowka != null) {
         req.body.calowka.forEach(function (elmnt) {
             totalCalowkaValue += Number(elmnt.value);
+            if(elmnt.v === "" )
+                elmnt.v = elmnt.x*elmnt.length*elmnt.amount;
         });
     }
+    console.log(req.body.calowka);
     orderValue += totalCalowkaValue + totalDrewnoValue;
 
-    var newOrder = new Order({
-        name: "Nazwa zamowienia",
-        lata: newLaty,
-        kontrlata: newKontrlaty,
-        paczkaOpalu: newPaczkaOpalu,
-        transport: newTransport,
-        value: orderValue,
-    });
-    var idOrderu;
+var newClientId;
 
+    Client.create(req.body.client, function(err, newlyCreatedClient){
+        if(err){
+            console.log(err);
+            req.flash("error", "Nie utworzono klienta");
+            res.redirect("/");
+        }
+        else{
+            newClientId = newlyCreatedClient._id;
+        }
+    });
+
+    var newOrder = new Order({
+    name: "Nazwa zamowienia",
+    lata: newLaty,
+    kontrlata: newKontrlaty,
+    paczkaOpalu: newPaczkaOpalu,
+    transport: newTransport,
+    value: orderValue,
+    });
+
+    var idOrderu;
+    console.log("=============");
+console.log(req.body.calowka);
     var newCalowki = new DeskaCalowka(req.body.calowka);
     var newDrewno = new DrewnoKonstrukcyjne(req.body.drewno);
-
-    console.log(req.body.drewno);
 
     // Order.create(newOrder, function(err, newlyCreatedOrder){
     //     if(err)
@@ -169,10 +188,12 @@ router.post("/", middlewareObj.redirectIfNotLoggedIn, function(req, res) {
     //     }
     // });
     //
+
     Order.create(newOrder, function (err, newlyCreatedOrder) {
         if (err) {
             console.log(err);
         } else {
+
             if (req.body.drewno != null && req.body.calowka != null) {
                 DrewnoKonstrukcyjne.insertMany(req.body.drewno, function (err, newlyCreated) {
                     if (err) {
@@ -194,6 +215,7 @@ router.post("/", middlewareObj.redirectIfNotLoggedIn, function(req, res) {
                             newlyCreatedOrder.calowki.push(elmnt);
 
                         });
+                        newlyCreatedOrder.customer = newClientId;
                         newlyCreatedOrder.save();
                         res.redirect("/");
                     }
@@ -208,6 +230,7 @@ router.post("/", middlewareObj.redirectIfNotLoggedIn, function(req, res) {
                         newlyCreated.forEach(function (elmnt) {
                             newlyCreatedOrder.drewnaKonstrukcyjne.push(elmnt);
                         });
+                        newlyCreatedOrder.customer = newClientId;
                         newlyCreatedOrder.save();
                         res.redirect("/");
                     }
@@ -223,12 +246,15 @@ router.post("/", middlewareObj.redirectIfNotLoggedIn, function(req, res) {
                             newlyCreatedOrder.calowki.push(elmnt);
 
                         });
+                        newlyCreatedOrder.customer = newClientId;
                         newlyCreatedOrder.save();
                         res.redirect("/");
                     }
                 });
             }
             else{
+                newlyCreatedOrder.customer = newClientId;
+                newlyCreatedOrder.save();
                 res.redirect("/");
             }
         }

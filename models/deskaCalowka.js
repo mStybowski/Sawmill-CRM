@@ -4,10 +4,7 @@ var deskaCalowkaSchema = new mongoose.Schema({
     v: Number,
     x: Number,
     length: Number,
-    top: Boolean,
-    right: Boolean,
-    bot: Boolean,
-    left: Boolean,
+    hebel: [String],
     amount: Number,
     price: Number,
     value: Number

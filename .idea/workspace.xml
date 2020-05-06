@@ -1,7 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="24751351-93bd-4288-aa29-ea210e08a968" name="Default Changelist" comment="" />
+    <list default="true" id="24751351-93bd-4288-aa29-ea210e08a968" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/clients.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/orderThumbnail.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/icons/client.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/icons/geo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/icons/ilosc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/icons/interface.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/icons/landscape.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/icons/length.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/icons/lift.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/icons/miscellaneous.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/icons/newOrder-dark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/icons/paint.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/icons/phone.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/icons/seo-and-web.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/icons/signs.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/icons/travel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/icons/tree.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/icons/volume.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/deskaCalowka.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/deskaCalowka.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/drewnoKonstrukcyjne.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/drewnoKonstrukcyjne.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/order.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/form.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/form.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/calculator.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/calculator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/clients.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/clients.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/orders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/clients/all.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/clients/all.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/orders/new.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/orders/new.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/orders/show.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/orders/show.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partials/header.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/header.ejs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,7 +51,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1aae2Cn4LeFDFwbgTlkWsCqif8a" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -23,6 +63,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.16.3" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -64,7 +105,14 @@
       <workItem from="1588528159866" duration="6464000" />
       <workItem from="1588537334241" duration="1977000" />
       <workItem from="1588543579197" duration="1276000" />
-      <workItem from="1588574344068" duration="3616000" />
+      <workItem from="1588574344068" duration="13539000" />
+      <workItem from="1588602544970" duration="3529000" />
+      <workItem from="1588611352309" duration="11844000" />
+      <workItem from="1588667058859" duration="399000" />
+      <workItem from="1588669350162" duration="12349000" />
+      <workItem from="1588687506416" duration="1956000" />
+      <workItem from="1588702872865" duration="2715000" />
+      <workItem from="1588752044629" duration="2260000" />
     </task>
     <servers />
   </component>

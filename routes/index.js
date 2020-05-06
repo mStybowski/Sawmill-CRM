@@ -8,7 +8,7 @@ var Price = require("../models/price");
 var router = express.Router();
 
 router.get("/", middlewareObj.redirectIfNotLoggedIn, (req, res)=>{
-    Order.find({}).populate("calowki").populate("drewnaKonstrukcyjne").exec(function(err, found){
+    Order.find({}).sort({ created: -1 }).limit(10).populate("calowki").populate("drewnaKonstrukcyjne").populate("customer").exec(function(err, found){
         res.render("index", {ordixy: found});
     });
 

@@ -3,8 +3,8 @@ var mongoose = require("mongoose");
 var ClientSchema = new mongoose.Schema({
     name: String,
     lastName: String,
-    nameFor: String,
     telephone: String,
+    town: String,
     address: String,
     description: String,
     kilometers: Number,

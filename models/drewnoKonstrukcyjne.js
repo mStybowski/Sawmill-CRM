@@ -4,7 +4,7 @@ var drewnoKonstrukcyjneSchema = new mongoose.Schema({
     x: Number,
     y: Number,
     length: Number,
-    planed: [Boolean],
+    hebel: [String],
     amount: Number,
     price: Number,
     value: Number,

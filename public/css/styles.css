@@ -30,17 +30,15 @@ a{
     margin: 15px 0;
     display: grid;
     justify-content: center;
-    grid-template-columns: 300px 300px 300px;/*Make the grid smaller than the container*/
-    grid-gap: 12px;
+    grid-template-columns: 490px 490px;/*Make the grid smaller than the container*/
+    grid-gap: 40px;
 
 }
 
 .grid-container > div {
-    background-color: #272727;
-    color: #b1b1b1;
     text-align: center;
-    padding: 20px 0;
-    box-shadow: 6px 6px 6px -5px rgba(0,0,0,0.61);
+
+
 }
 
 .grid-container div a {
@@ -113,7 +111,7 @@ align-self: flex-start;
 .standaloneForm input, select{
     margin: 6px 0;
     height: 36px;
-    width: 200px;
+
     padding: 4px 15px;
     border-radius: 3px;
     border: 1px solid #b4b4b4;
@@ -124,12 +122,21 @@ align-self: flex-start;
 }
 
 .standaloneForm input[type=submit]{
-    margin-top: 20px;
-    text-transform: uppercase;
-    border: none;
-    background-color: #54da70;
+    background-color: #269f42;
+    background-image: linear-gradient(-180deg,#2fcb53,#269f42 90%);
+    padding: 3px 10px;
+    font-size: 12px;
+    line-height: 20px;
+    color:white;
+    user-select: none;
+    background-repeat: repeat-x;
+    background-position: -1px -1px;
+    background-size: 110% 110%;
+    border: 1px solid rgba(27,31,35,.2);
+    border-radius: .25em;
+    -webkit-appearance: none;
+    font-family: 'Helvetica-Narrow', sans-serif;
     font-weight: bold;
-    border-radius: 20px;
     cursor: pointer;
 }
 
@@ -153,6 +160,8 @@ align-self: flex-start;
 
 .item-name{
 margin: 15px 0;
+    display: flex;
+    justify-content: space-between;
     background-color: #5d3a0a;
     padding: 5px 15px;
     border-radius: 10px;
@@ -391,7 +400,7 @@ margin: 15px 0;
 }
 
 .turnedOn{
-    border-color: #66ff57 !important;
+    background-color: #66ff57 !important;
 
 }
 .turnedOff{

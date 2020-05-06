@@ -1,11 +1,75 @@
 <%- include("../partials/header.ejs")%>
+<%var nazwaKlienta;
+function clientName(client){
+    return (client.name + " " + client.lastName);
+    if(client.nameFor.length > 0)
+        return client.nameFor;
+    else{
+        return (client.name + " " + client.lastName);
+    }
+}%>
 <div class="container">
+    <div class="grid-container-1column">
+        <div class="clientThumbnail">
 
-    <%clients.forEach(function(client){ %>
-        <div class="client">
-            <h4><%= client.name%> <%= client.lastName%></h4>
-            <a href="/clients/<%=client._id%>/">Zobacz szczegóły</a>
+            <div class="clientThumbnail-ImageAndName">
+                <div class="clientThumbnail-ImageAndName-Image">
+                    <a id="addNewClientText" href="/clients/new">
+                    <img src="/images/icons/interface.png" class="clientPhoto">
+                    </a>
+                </div>
+                <div class="clientThumbnail-ImageAndName-Name">
+                    <a id="addNewClientText" href="/clients/new">Dodaj nowego klienta</a >
+                </div>
+            </div>
+
+            <div class="clientThumbnail-Info">
+                <div class="clientThumbnail-Attribute">
+
+                    <span></span>
+                </div>
+                <div class="clientThumbnail-Attribute">
+
+                    <span></span>
+                </div>
+                <span></span>
+
+            </div>
+
         </div>
+    <%clients.forEach(function(client){ %>
+        <div class="clientThumbnail">
+
+            <div class="clientThumbnail-ImageAndName">
+                <div class="clientThumbnail-ImageAndName-Image">
+                    <img src="/images/icons/client.png" class="clientPhoto">
+                </div>
+                <div class="clientThumbnail-ImageAndName-Name">
+                     <%=client.lastName%> <%=client.name%>
+                    <div>
+                        <a class="createNewOrderFromUser" href="/">
+                        <img class="newOrderFromUserIcon" src="/images/icons/signs.png">
+                        <span>Utwórz nowe zamówienie<span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clientThumbnail-Info">
+                <div class="clientThumbnail-Attribute">
+                    <img src="/images/icons/phone.png" class="clientThumbnailIcon">
+                    <span><%=client.telephone%></span>
+                </div>
+                <div class="clientThumbnail-Attribute">
+                    <img src="/images/icons/geo.png" class="clientThumbnailIcon">
+                    <span><%=client.town%></span>
+                </div>
+                <span><a href="/clients/<%=client._id%>">Szczegóły ></a></span>
+
+            </div>
+
+        </div>
+
     <%});%>
 </div>
 <%- include("../partials/footer.ejs")%>
