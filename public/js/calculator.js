@@ -27,8 +27,9 @@ function updateDisabled(elmntID){
 function zmienionoValue(elmnt){
 
     elmntID = elmnt.getAttribute("counter");
-    wartoscOstateczna = elmnt.value;
-    document.getElementById(`nicePrice[${elmntID}]`).innerText = wartoscOstateczna + " zł";
+    wartoscOstatecznaBrutto = elmnt.value;
+    updateNicePrice(elmntID, calculateNetto(wartoscOstatecznaBrutto), wartoscOstatecznaBrutto);
+
 }
 
 function calculateDrewnoKonstrukcyjnePrice(idToCount){
@@ -39,9 +40,20 @@ function calculateDrewnoKonstrukcyjnePrice(idToCount){
     var ilosc = document.getElementById(`[${idToCount}][ilosc]`).value;
     var cena = document.getElementById(`[${idToCount}][cena]`).value;
 
-    var wartoscOstateczna = x * y * length * ilosc * cena;
-    document.getElementById(`Wartosc[${idToCount}]`).value = wartoscOstateczna;
-    document.getElementById(`nicePrice[${idToCount}]`).innerText = wartoscOstateczna + " zł";
+    var cenaPozycji = x * y * length * ilosc * cena;
+    document.getElementById(`Wartosc[${idToCount}]`).value = calculateBrutto(cenaPozycji);
+
+    updateNicePrice(idToCount, cenaPozycji.toFixed(2), calculateBrutto(cenaPozycji));
+}
+
+function updateNicePrice(id, netto, brutto){
+    document.getElementById(`nicePrice[${id}]`).innerHTML = `${netto} zł Netto / <strong>${brutto} zł Brutto</strong>`;
+}
+function calculateBrutto(netto){
+    return (netto + netto*0.23).toFixed(2);
+}
+function calculateNetto(brutto){
+    return (brutto/1.23).toFixed(2);
 }
 
 
@@ -64,15 +76,16 @@ function calculateDeskaCalowkaPrice(idToCount){
 
     }
     //TODO funkcja do zwracania ceny pozycji
-    document.getElementById(`Wartosc[${idToCount}]`).value = cenaPozycji;
-    document.getElementById(`nicePrice[${idToCount}]`).innerText = cenaPozycji + " zł";
+    document.getElementById(`Wartosc[${idToCount}]`).value = calculateBrutto(cenaPozycji);
+    updateNicePrice(idToCount, cenaPozycji, calculateBrutto(cenaPozycji));
+
 }
 
-function calculateLataPrice(idToCount){
-    //var idToCount = elmnt.getAttribute("id");
+function calculatePrice(idToCount){
     var metrBiezacy = document.getElementById(`[${idToCount}][x]`).value;
     var cena = document.getElementById(`[${idToCount}][cena]`).value;
-    document.getElementById(`Wartosc[${idToCount}]`).value = metrBiezacy * cena;
+    document.getElementById(`Wartosc[${idToCount}]`).value = calculateBrutto(metrBiezacy * cena);
+    updateNicePrice(idToCount, (metrBiezacy * cena).toFixed(2), calculateBrutto(metrBiezacy * cena));
 }
 
 
@@ -97,6 +110,7 @@ function handleHebel(elmnt){
     let position = elmnt.getAttribute("pos");
     console.log("Counter:" + idToCount + ". Element: " + position);
     allHebels[idToCount][position] = !allHebels[idToCount][position];
+    var cenaHebla = document.getElementById("HebelPrice").value;
     var defaultPrice=0;
 
     if(rodzaj === "calowka") {
@@ -111,7 +125,7 @@ function handleHebel(elmnt){
         iloscHebli += 1;
     });
 
-    document.getElementById(`[${idToCount}][cena]`).value = Number(Number(defaultPrice) + iloscHebli*100);
+    document.getElementById(`[${idToCount}][cena]`).value = Number(Number(defaultPrice) + iloscHebli*cenaHebla);
 
     document.getElementById(`[${idToCount}][${position}]`).checked = !document.getElementById(`[${idToCount}][${position}]`).checked;
     updateColor(idToCount, position);
@@ -126,17 +140,34 @@ function handleHebel(elmnt){
 
 function disableDimensions(elmnt){
     let idToCount = elmnt.getAttribute("counter");
-    if(document.getElementById(`[${idToCount}][v]`).value > 0){
+    if(elmnt.value){
         document.getElementById(`[${idToCount}][x]`).disabled = true;
         document.getElementById(`[${idToCount}][length]`).disabled = true;
         document.getElementById(`[${idToCount}][ilosc]`).disabled = true;
     }
     //TODO - Create an infobar when clicked X or length input to inform user that he had already entered the volume
-    else if(document.getElementById(`[${idToCount}][v]`).value <= 0){
+    else if(!elmnt.value){
         document.getElementById(`[${idToCount}][x]`).disabled = false;
         document.getElementById(`[${idToCount}][length]`).disabled = false;
         document.getElementById(`[${idToCount}][ilosc]`).disabled = false;
 
+    }
+}
+function checkIfNoDimensions(id){
+    var x = document.getElementById(`[${id}][x]`).value;
+    var length = document.getElementById(`[${id}][length]`).value;
+    var ilosc = document.getElementById(`[${id}][ilosc]`).value;
+    return x.length <= 0 && length.length <= 0 && ilosc.length <= 0;
+}
+
+function disableVolume(elmnt){
+    let idToCount = elmnt.getAttribute("counter");
+    if(elmnt.value){
+        document.getElementById(`[${idToCount}][v]`).disabled = true;
+    }
+    //TODO - Create an infobar when clicked X or length input to inform user that he had already entered the volume
+    else if(checkIfNoDimensions(idToCount)){
+        document.getElementById(`[${idToCount}][v]`).disabled = false;
     }
 }
 
@@ -147,7 +178,7 @@ document.getElementById('drewnoKonstrukcyjne-button').onclick = function () {
 <div class="item-name">
 <h4>DrewnoKonstrukcyjne</h4>
 <span id="nicePrice[${i}]" >
---- zł
+--- zł Netto / <strong>--- zł Brutto</strong>
 </span>
 </div>
 <div class="item-properties">
@@ -178,7 +209,7 @@ document.getElementById('drewnoKonstrukcyjne-button').onclick = function () {
         
         <div class="hebelWrapper">
             <div class="wrapper-top" >
-                <div class="top" pos="0" counter="${i}" rodzaj="drewno" identifier= "[0]${i}"onclick="handleHebel(this)" >
+                <div class="top" pos="0" counter="${i}" rodzaj="drewno" identifier= "[0]${i}" onclick="handleHebel(this)" >
         
                 </div>
             </div>
@@ -190,13 +221,13 @@ document.getElementById('drewnoKonstrukcyjne-button').onclick = function () {
                 <div class="mid centerly">
 
                 </div>
-                <div class="mid" pos="1" counter="${i}" rodzaj="drewno" identifier= "[1]${i}"onclick="handleHebel(this)" >
+                <div class="mid" pos="1" counter="${i}" rodzaj="drewno" identifier= "[1]${i}" onclick="handleHebel(this)" >
 
                 </div>
             </div>
     
             <div class="wrapper-bot">
-                <div class="bot" pos="2" counter="${i}" rodzaj="drewno" identifier= "[2]${i}"onclick="handleHebel(this)">
+                <div class="bot" pos="2" counter="${i}" rodzaj="drewno" identifier= "[2]${i}" onclick="handleHebel(this)">
                 </div>
             </div>
         </div>
@@ -234,7 +265,7 @@ document.getElementById('calowka-button').onclick = function () {
 <div class="item-name">
 <h4>Deska Calowka</h4>
 <span id="nicePrice[${i}]" >
---- zł
+--- zł Netto / <strong>--- zł Brutto</strong>
 </span>
 </div>
 <div class="item-properties">
@@ -244,15 +275,15 @@ document.getElementById('calowka-button').onclick = function () {
         </div>
         <div class="itemInput">
             <span>Szerokość</span><br>
-            <input name="calowka[${i}][x]" id="[${i}][x]" >
+            <input name="calowka[${i}][x]" counter="${i}" id="[${i}][x]" oninput="disableVolume(this)">
         </div>
         <div class="itemInput">
             <span>Długość</span><br>
-            <input name="calowka[${i}][length]" id="[${i}][length]">
+            <input name="calowka[${i}][length]" counter="${i}" id="[${i}][length]" oninput="disableVolume(this)" >
         </div>
         <div class="itemInput">
             <span>Ilość</span><br>
-            <input name="calowka[${i}][amount]" id="[${i}][ilosc]" >
+            <input name="calowka[${i}][amount]" counter="${i}" id="[${i}][ilosc]" oninput="disableVolume(this)" >
         </div>
 
         <div class="itemInput">
@@ -310,7 +341,14 @@ document.getElementById('lata-button').onclick = function () {
 
 
     let template = `
-<h3>Łata</h3>
+<div class="item">
+<div class="item-name">
+<h4>Łata</h4>
+<span id="nicePrice[${i}]" >
+--- zł Netto / <strong>--- zł Brutto</strong>
+</span>
+</div>
+<div class="item-properties">
         <p>
             <label>Metrow bierzacych</label><br>
             <input name="lata[metryBiezace]" id="[${i}][x]">
@@ -324,9 +362,11 @@ document.getElementById('lata-button').onclick = function () {
         
     
         <p>
-            <input name="lata[value]" id="Wartosc[${i}]" >
-            <button type="button" onclick="calculateLataPrice(id)" id="${i}">Oblicz cene</button>
+            <input name="lata[value]" id="Wartosc[${i}]" counter="${i}" oninput="zmienionoValue(this)" >
+            <button type="button" onclick="calculatePrice(id)" id="${i}">Oblicz cene</button>
         </p>
+        </div>
+        </div>
 `;
 
     let container = document.getElementById('zamowienie-container');
@@ -343,7 +383,14 @@ document.getElementById('lata-button').onclick = function () {
 document.getElementById('kontrlata-button').onclick = function () {
 
     let template = `
-<h3>Kontrłata</h3>
+<div class="item">
+<div class="item-name">
+<h4>Kontrłata</h4>
+<span id="nicePrice[${i}]" >
+--- zł Netto / <strong>--- zł Brutto</strong>
+</span>
+</div>
+<div class="item-properties">
         <p>
             <label>Metrow bierzacych</label><br>
             <input name="kontrlata[metryBiezace]" id="[${i}][x]">
@@ -354,9 +401,11 @@ document.getElementById('kontrlata-button').onclick = function () {
             <input name="kontrlata[price]" id="[${i}][cena]" value=${KontrlataPrice}>
         </p>
         <p>
-            <input name="kontrlata[value]" id="Wartosc[${i}]" >
-            <button type="button" onclick="calculateLataPrice(id)" id="${i}">Oblicz cene</button>
+            <input name="kontrlata[value]" id="Wartosc[${i}]" counter="${i}" oninput="zmienionoValue(this)" >
+            <button type="button" onclick="calculatePrice(id)"  id="${i}">Oblicz cene</button>
         </p>
+        </div>
+        </div>
 `;
 
     let container = document.getElementById('zamowienie-container');
@@ -373,7 +422,14 @@ document.getElementById('kontrlata-button').onclick = function () {
 document.getElementById('opal-button').onclick = function () {
 
     let template =
-        `<h3>Paczka opału</h3>
+        `<div class="item">
+<div class="item-name">
+<h4>Opał</h4>
+<span id="nicePrice[${i}]" >
+--- zł Netto / <strong>--- zł Brutto</strong>
+</span>
+</div>
+<div class="item-properties">
         <p>
             <label>Ilosc paczek</label><br>
             <input name="opal[amount]" id="[${i}][x]">
@@ -384,9 +440,11 @@ document.getElementById('opal-button').onclick = function () {
             <input name="opal[price]" id="[${i}][cena]" value=${OpalPrice}>
         </p>
         <p>
-            <input name="opal[value]" id="Wartosc[${i}]" >
-            <button type="button" onclick="calculateLataPrice(id)" id="${i}">Oblicz cene</button>
-        </p>`;
+            <input name="opal[value]" id="Wartosc[${i}]" counter="${i}" oninput="zmienionoValue(this)" >
+            <button type="button" onclick="calculatePrice(id)" counter="${i}"  id="${i}" >Oblicz cene</button>
+        </p>
+</div>
+</div>`;
 
     let container = document.getElementById('zamowienie-container');
     let div = document.createElement('div');
@@ -404,11 +462,30 @@ document.getElementById('transport-button').onclick = function () {
 
 
     let template =
-        `<h3>Transport</h3>
+        `
+<div class="item">
+<div class="item-name">
+<h4>Transport</h4>
+<span id="nicePrice[${i}]" >
+--- zł Netto / <strong>--- zł Brutto</strong>
+</span>
+</div>
+<div class="item-properties">
         <p>
-            <label>Cena</label><br>
-            <input name="transport[value]" id="[${i}][cena]" value=${TransportPrice}>
-        </p>`;
+            <label>Dystans [km]</label>
+            <input name="transport[kilometers]" id="[${i}][x]" counter="${i}" oninput="calculatePrice(${i})" >
+        </p>
+        <p>
+            <label>Stawka za km</label>
+            <input name="transport[value]" id="[${i}][cena]" counter="${i}" oninput="calculatePrice(${i})" >
+        </p>
+        <p>
+            <label>Cena</label>
+            <input name="transport[value]" id="Wartosc[${i}]" counter="${i}" value=${TransportPrice} oninput="zmienionoValue(this)" >
+        </p>
+        </div>
+        </div>
+`;
 
     let container = document.getElementById('zamowienie-container');
     let div = document.createElement('div');

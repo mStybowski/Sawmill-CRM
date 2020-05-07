@@ -1,0 +1,30 @@
+07.05.2020
+==========
+
+* BUG FIXES *
+- Zbyt wczesne odblokowywanie volume input przy desce calówce. Teraz jest enabled tylko wtedy gdy tresc zniknie ze wszystkich pozostalych inputow
+
+
+* FEATURES ADDED *
+- Od teraz w nicePrice wyświetla się także cena brutto którą można edytować z łapy w inpucie poniżej
+
+* CSS *
+- Dodane nagłówki dla każdej z pozycji
+
+* REFAKTORYZACJA *
+- Ulepszono kod calculator.js
+
+
+
+
+
+
+TODO:
+- Dodawanie zamówień do istniejących klientów
+- Stworzenie strony zamówienia
+- Stworzenie strony klienta
+- CSS nowego zamówienia
+- Dodanie brakujacych inputow do zamowienia zgodnie z potrzebami
+- Sprawdzenie poprawności formularzy przed wysłaniem
+ . Formularzy zamówienia
+ . Formularzy nowego klienta

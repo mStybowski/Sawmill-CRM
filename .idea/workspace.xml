@@ -2,41 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24751351-93bd-4288-aa29-ea210e08a968" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/clients.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/orderThumbnail.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/icons/client.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/icons/geo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/icons/ilosc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/icons/interface.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/icons/landscape.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/icons/length.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/icons/lift.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/icons/miscellaneous.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/icons/newOrder-dark.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/icons/paint.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/icons/phone.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/icons/seo-and-web.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/icons/signs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/icons/travel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/icons/tree.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/icons/volume.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TODO" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/client.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/deskaCalowka.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/deskaCalowka.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/drewnoKonstrukcyjne.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/drewnoKonstrukcyjne.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/order.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/form.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/form.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/calculator.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/calculator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/clients.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/clients.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/orders.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/clients/all.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/clients/all.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/orders/new.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/orders/new.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/orders/show.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/orders/show.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partials/header.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/header.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,8 +15,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -112,7 +81,9 @@
       <workItem from="1588669350162" duration="12349000" />
       <workItem from="1588687506416" duration="1956000" />
       <workItem from="1588702872865" duration="2715000" />
-      <workItem from="1588752044629" duration="2260000" />
+      <workItem from="1588752044629" duration="3748000" />
+      <workItem from="1588789502105" duration="7361000" />
+      <workItem from="1588841637428" duration="4341000" />
     </task>
     <servers />
   </component>
@@ -120,10 +91,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="706" y="323" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586980731880">
+    <state x="706" y="323" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588842869127">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="706" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1586980731880" />
+    <state x="706" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588842869127" />
     <state x="623" y="225" key="search.everywhere.popup" timestamp="1588409373964">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -181,6 +181,37 @@
                                     </div>
                                 </div>
                             <%}%>
+                            <%if(order.transport.value){%>
+                                <div class="orderThumbnail-Content-Item">
+                                    <div class="orderThumbnail-Content-Item-Header">
+                                        <div class="orderThumbnail-Content-Item-Header-Name">
+                                            <img src="/images/icons/transport.png" class="orderThumbnailItemIcon">
+                                            <span class="orderThumbnailItemName">
+                                                Transport
+                                            </span>
+                                        </div>
+                                        <div class="orderThumbnail-Content-Item-Header-Value">
+                                            <span class="orderThumbnailItemValue">
+                                                <%= order.transport.value.toFixed(2) %> PLN
+                                            </span>
+
+                                        </div>
+                                    </div>
+                                    <div class="orderThumbnail-Content-Item-Attributes">
+                                        <div class="orderThumbnail-Content-Item-Attributes">
+                                            <div class="orderThumbnail-Content-Item-Attributes-feature">
+                                                <img src="/images/icons/road.png" class="orderThumbnailAttributeIcon" >
+                                                <span>Kilometry: <%=order.customer.kilometers%></span>
+                                            </div>
+                                            <div class="orderThumbnail-Content-Item-Attributes-feature">
+                                                <img src="/images/icons/calendar.png" class="orderThumbnailAttributeIcon" >
+                                                <span>Termin: 1 tydzień maja</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            <%}%>
                     </div>
                     <div class="orderThumbnail-Footer">
                         <div class="orderThumbnail-Footer-Description">
