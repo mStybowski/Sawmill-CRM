@@ -62,6 +62,7 @@
                 <h2 class="formSectionHeader">Nowe zamówienie</h2><br>
             </div>
             <form action="/orders" method="POST">
+
                 <div class="formSection-mid">
                     <div id="zamowienie-container">
 
@@ -70,35 +71,47 @@
 
                 <div class="formSection-bottom">
                     <div class="chooseItem">
-                        <button type="button" id="drewnoKonstrukcyjne-button">Drewno Konstrukcyjne</button>
-                        <button type="button" id="calowka-button">Deska calówka</button>
-                        <button type="button" id="lata-button">Łata</button>
-                        <button type="button" id="kontrlata-button">Kontrłata</button>
-                        <button type="button" id="opal-button">Paczka opału</button>
-                        <button type="button" id="transport-button">Transport</button>
+                        <button type="button" id="drewnoKonstrukcyjne-button"><img src="/images/icons/nature.png" class="smallIcon">Drewno Konstrukcyjne</button>
+                        <button type="button" id="calowka-button"><img src="/images/icons/calowka.png" class="smallIcon">Deska calówka</button>
+                        <button type="button" id="lata-button"><img src="/images/icons/lata.png" class="smallIcon">Łata</button>
+                        <button type="button" id="kontrlata-button"><img src="/images/icons/kontrlata.png" class="smallIcon XS">Kontrłata</button>
+                        <button type="button" id="opal-button"><img src="/images/icons/opal.png" class="smallIcon">Paczka opału</button>
+                        <button type="button" id="transport-button"><img src="/images/icons/transport.png" class="smallIcon">Transport</button>
                     </div>
                 </div>
+                <div class="orderInfoDiv">
+                <input type="text" name="description">
+                    <label>Opis zamówienia</label>
 
-                <input type="text" name="client[name]" placeholder="Imię">
-                <input type="text" name="client[lastName]" placeholder="Nazwisko">
-                <input type="text" name="client[telephone]" placeholder="Numer telefonu">
-                <input type="text" name="client[town]" placeholder="Miasto">
-                <input type="text" name="client[address]" placeholder="Adres">
+                    <input type="text" name="deadline">
+                    <label>Termin wykonania</label>
+                </div>
+                <h3 class="smallHeader">Dane zamawiającego</h3>
+                <div class="orderInfoDiv">
 
+                    <input type="text" name="client[name]" >
+                    <label>Imie</label>
 
-                <input type="submit">
+                    <input type="text" name="client[lastName]" >
+                    <label>Nazwisko</label>
+
+                    <input type="text" name="client[telephone]" >
+                    <label>Numer telefonu</label>
+
+                    <input type="text" name="client[town]" >
+                    <label>Miejscowość</label>
+                    <input type="text" name="client[address]" >
+                    <label>Adres</label>
+
+                </div>
+                <input type="submit" >
 
             </form>
         </div>
     </div>
 
 </div>
-<br><br>
 
-
-
-
-<script src="/js/hebel.js"></script>
 <script src="/js/calculator.js"></script>
 
 

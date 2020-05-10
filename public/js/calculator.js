@@ -27,10 +27,12 @@ function updateDisabled(elmntID){
 function zmienionoValue(elmnt){
 
     elmntID = elmnt.getAttribute("counter");
-    wartoscOstatecznaBrutto = elmnt.value;
-    updateNicePrice(elmntID, calculateNetto(wartoscOstatecznaBrutto), wartoscOstatecznaBrutto);
+    wartoscOstatecznaBrutto = Number(elmnt.value);
+    updateNicePrice(elmntID, calculateNetto(wartoscOstatecznaBrutto), wartoscOstatecznaBrutto.toFixed(2));
 
 }
+
+
 
 function calculateDrewnoKonstrukcyjnePrice(idToCount){
 
@@ -174,40 +176,86 @@ function disableVolume(elmnt){
 document.getElementById('drewnoKonstrukcyjne-button').onclick = function () {
 
     let template = `
-<div class="item">
-<div class="item-name">
-<h4>DrewnoKonstrukcyjne</h4>
-<span id="nicePrice[${i}]" >
---- zł Netto / <strong>--- zł Brutto</strong>
-</span>
-</div>
-<div class="item-properties">
-        <div class="itemInput"
-            <span>Wymiar X</span>
-            <input name="drewno[${i}][x]" id="[${i}][x]"  >
+<div class="formItem">
+    <div class="formItem-Header">
+        <div class="formItem-Header-ProductName">
+            <img src="/images/icons/nature.png">
+            <span>Drewno Konstrukcyjne</span>
         </div>
-
-        <div class="itemInput"
-            <label>Wymiar Y</label>
-            <input name="drewno[${i}][y]" id="[${i}][y]" > 
+        <div class="formItem-Header-Pricing">
+            <span id="nicePrice[${i}]" >
+                --- zł Netto / <strong>--- zł Brutto</strong>
+            </span>
         </div>
-
-        <div class="itemInput"
-            <label>dlugosc</label>
-            <input name="drewno[${i}][length]" id="[${i}][length]" >
+    </div>
+    <div class="formRow">
+        <div class="formItem-Properties-Text">
+            <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                    <div class="bi"></div>
+                    <input name="drewno[${i}][x]" id="[${i}][x]" class="featureInput">
+                    <div class="bi"></div>
+                </div>
+                <span>Szerokość</span>
+            </div>
+            
+            <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                    <div class="bi"></div>
+                    <input name="drewno[${i}][y]" id="[${i}][y]" class="featureInput"> 
+                    <div class="bi"></div>
+                </div>
+                <span>Wysokość</span>
+            </div>
+            
+            <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                    <div class="bi"></div>
+                    <input name="drewno[${i}][length]" id="[${i}][length]" class="featureInput">
+                    <div class="bi"></div>
+                </div>
+                <span>Długość</span>
+            </div>
+            
+            <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                    <div class="bi"></div>
+                    <input name="drewno[${i}][amount]" id="[${i}][ilosc]" class="featureInput">
+                    <div class="bi"></div>
+                </div>
+            <span>Ilość</span>
+            </div>
+                
         </div>
-        <div class="itemInput"
-            <label>Ilosc</label>
-            <input name="drewno[${i}][amount]" id="[${i}][ilosc]" >
+        <div class="formItem-Properties-Checkboxes">
+            <div class="formItem-Properties-Checkboxes-Element">
+                <input type="checkbox" name="drewno[${i}][painted]" >
+                <span>Impregnacja</span>
+            </div>
+            <div class="formItem-Properties-Checkboxes-Element">
+                <input type="checkbox" name="drewno[${i}][heblowane]" >
+                <span>Heblowanie</span>
+            </div>
         </div>
-
-        <div class="itemInput"
-            <label>Cena</label>
-            <input name="drewno[${i}][price]" id="[${i}][cena]" value=${DrewnoPrice}>
-        </div>
-   
-        
-        <div class="hebelWrapper">
+        <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                    <div class="bi"></div>
+                    <input name="drewno[${i}][price]" id="[${i}][cena]" class="featureInput" value=${DrewnoPrice}>
+                    <div class="bi"></div>
+                </div>
+            <span>zł/m<sup>3</sup></span>
+            </div>
+    </div>
+    <div class="formRow">
+            <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                        <div class="bi"></div>
+                        <input name="drewno[${i}][description]" id="[${i}][opis]" class="featureInput longFeatureInput">
+                        <div class="bi"></div>
+                    </div>
+                <span>Komentarz</span>
+            </div>
+            <div class="hebelWrapper">
             <div class="wrapper-top" >
                 <div class="top" pos="0" counter="${i}" rodzaj="drewno" identifier= "[0]${i}" onclick="handleHebel(this)" >
         
@@ -231,18 +279,29 @@ document.getElementById('drewnoKonstrukcyjne-button').onclick = function () {
                 </div>
             </div>
         </div>
+            <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                            <div class="di">
+                                <div class="bi"></div>
+                                <div class="bi"></div>
+                            </div>
+                        <input name="drewno[${i}][value]" id="Wartosc[${i}]" counter="${i}" oninput="zmienionoValue(this)" class="featureInput finalFeatureInput">
+                            <div class="di">
+                                <div class="bi"></div>
+                                <div class="bi"></div>
+                            </div>
+                    </div>
+                <span><strong>BRUTTO</strong></span>
+            </div>
+    </div>
+    <button type="button" onclick="calculateDrewnoKonstrukcyjnePrice(id)" class="calculatePriceButton" id="${i}">Oblicz</button>
 </div>
-        <div class="itemInput">
-            <input name="drewno[${i}][value]" id="Wartosc[${i}]" counter="${i}" oninput="zmienionoValue(this)">
-            <button type="button" onclick="calculateDrewnoKonstrukcyjnePrice(id)" id="${i}">Oblicz koszt</button>
-        </div>
-        </div>
+        
         <div style="display:none">
-<!--            TODO-->
-                <input type="checkbox" name="drewno[${i}][hebel][1]" id="[${i}][0]">
-                <input type="checkbox" name="drewno[${i}][hebel][2]" id="[${i}][1]">
-                <input type="checkbox" name="drewno[${i}][hebel][3]" id="[${i}][2]">
-                <input type="checkbox" name="drewno[${i}][hebel][4]" id="[${i}][3]">
+                <input type="checkbox" name="drewno[${i}][htop]" id="[${i}][0]">
+                <input type="checkbox" name="drewno[${i}][hright]" id="[${i}][1]">
+                <input type="checkbox" name="drewno[${i}][hbottom]" id="[${i}][2]">
+                <input type="checkbox" name="drewno[${i}][hleft]" id="[${i}][3]">
          </div>
 
 `;
@@ -261,37 +320,87 @@ i++;
 document.getElementById('calowka-button').onclick = function () {
 
     let template = `
-<div class="item">
-<div class="item-name">
-<h4>Deska Calowka</h4>
-<span id="nicePrice[${i}]" >
---- zł Netto / <strong>--- zł Brutto</strong>
-</span>
-</div>
-<div class="item-properties">
-        <div class="itemInput">
-            <span>Objętość</span><br>
-            <input name="calowka[${i}][v]" oninput="disableDimensions(this)" counter="${i}" id="[${i}][v]" >
+<div class="formItem">
+    <div class="formItem-Header">
+        <div class="formItem-Header-ProductName">
+            <img src="/images/icons/calowka.png">
+            <span>Deska Calówka</span>
         </div>
-        <div class="itemInput">
-            <span>Szerokość</span><br>
-            <input name="calowka[${i}][x]" counter="${i}" id="[${i}][x]" oninput="disableVolume(this)">
+        <div class="formItem-Header-Pricing">
+            <span id="nicePrice[${i}]" >
+                --- zł Netto / <strong>--- zł Brutto</strong>
+            </span>
         </div>
-        <div class="itemInput">
-            <span>Długość</span><br>
-            <input name="calowka[${i}][length]" counter="${i}" id="[${i}][length]" oninput="disableVolume(this)" >
+    </div>
+    <div class="formRow">
+        <div class="formItem-Properties-Text">
+            <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                    <div class="bi"></div>
+                    <input name="calowka[${i}][v]" oninput="disableDimensions(this)" counter="${i}" id="[${i}][v]" class="featureInput">
+                    <div class="bi"></div>
+                </div>
+                <span>Objętość</span>
+            </div>
+            
+            <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                    <div class="bi"></div>
+                    <input name="calowka[${i}][x]" counter="${i}" id="[${i}][x]" oninput="disableVolume(this)" class="featureInput">
+                    <div class="bi"></div>
+                </div>
+                <span>Szerokość</span>
+            </div>
+            
+            <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                    <div class="bi"></div>
+                    <input name="calowka[${i}][length]" counter="${i}" id="[${i}][length]" oninput="disableVolume(this)" class="featureInput">
+                    <div class="bi"></div>
+                </div>
+                <span>Długość</span>
+            </div>
+            
+            <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                    <div class="bi"></div>
+                    <input name="calowka[${i}][amount]" counter="${i}" id="[${i}][ilosc]" oninput="disableVolume(this)" class="featureInput">
+                    <div class="bi"></div>
+                </div>
+            <span>Ilość</span>
+            </div>
+                
         </div>
-        <div class="itemInput">
-            <span>Ilość</span><br>
-            <input name="calowka[${i}][amount]" counter="${i}" id="[${i}][ilosc]" oninput="disableVolume(this)" >
-        </div>
-
-        <div class="itemInput">
-            <span>zł/m<sup>3</sup></span><br>
-            <input name="calowka[${i}][price]" id="[${i}][cena]" value=${CalowkaPrice} >
+        <div class="formItem-Properties-Checkboxes">
+            <div class="formItem-Properties-Checkboxes-Element">
+                <input type="checkbox" name="calowka[${i}][painted]" >
+                <span>Impregnacja</span>
+            </div>
+            <div class="formItem-Properties-Checkboxes-Element">
+                <input type="checkbox" name="calowka[${i}][heblowane]" >
+                <span>Heblowanie</span>
+            </div>
         </div>
         
-
+        <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                    <div class="bi"></div>
+                    <input name="calowka[${i}][price]" id="[${i}][cena]" class="featureInput" value=${CalowkaPrice} class="featureInput">
+                    <div class="bi"></div>
+                </div>
+            <span>zł/m<sup>3</sup></span>
+        </div>
+        
+    </div>
+    <div class="formRow">
+    <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                        <div class="bi"></div>
+                        <input name="calowka[${i}][description]" id="[${i}][opis]" class="featureInput longFeatureInput">
+                        <div class="bi"></div>
+                    </div>
+                <span>Komentarz</span>
+            </div>
         <div class="hebelWrapper">
             <div class="wrapper-top" >
                 <div class="top" pos="0" counter="${i}" identifier= "[0]${i}" rodzaj="calowka" onclick="handleHebel(this)" >
@@ -312,18 +421,32 @@ document.getElementById('calowka-button').onclick = function () {
                 </div>
             </div>
         </div>
-</div>
-        <div>
-        <span>Wartość</span>
-            <input name="calowka[${i}][value]"id="Wartosc[${i}]" counter="${i}" oninput="zmienionoValue(this)" >
-            <button type="button" onclick="calculateDeskaCalowkaPrice(id)" id="${i}">Oblicz koszt</button>
-        </div>
+        
+        <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                            <div class="di">
+                                <div class="bi"></div>
+                                <div class="bi"></div>
+                            </div>
+                        <input name="calowka[${i}][value]"id="Wartosc[${i}]" counter="${i}" oninput="zmienionoValue(this)" class="featureInput finalFeatureInput">
+                            <div class="di">
+                                <div class="bi"></div>
+                                <div class="bi"></div>
+                            </div>
+                    </div>
+                <span><strong>BRUTTO</strong></span>
+            </div>
+        
+    </div>
+    <button type="button" onclick="calculateDeskaCalowkaPrice(id)" class="calculatePriceButton" id="${i}">Oblicz</button>
+
+
                 <div style="display:none">
 <!--            TODO-->
-                <input type="checkbox" name="calowka[${i}][hebel][1]" id="[${i}][0]">
-                <input type="checkbox" name="calowka[${i}][hebel][2]" id="[${i}][1]">
-                <input type="checkbox" name="calowka[${i}][hebel][3]" id="[${i}][2]">
-                <input type="checkbox" name="calowka[${i}][hebel][4]" id="[${i}][3]">
+                <input type="checkbox" name="calowka[${i}][htop]" id="[${i}][0]">
+                <input type="checkbox" name="calowka[${i}][hright]" id="[${i}][1]">
+                <input type="checkbox" name="calowka[${i}][hbottom]" id="[${i}][2]">
+                <input type="checkbox" name="calowka[${i}][hleft]" id="[${i}][3]">
          </div>
 `;
 
@@ -341,32 +464,77 @@ document.getElementById('lata-button').onclick = function () {
 
 
     let template = `
-<div class="item">
-<div class="item-name">
-<h4>Łata</h4>
-<span id="nicePrice[${i}]" >
---- zł Netto / <strong>--- zł Brutto</strong>
-</span>
-</div>
-<div class="item-properties">
-        <p>
-            <label>Metrow bierzacych</label><br>
-            <input name="lata[metryBiezace]" id="[${i}][x]">
-        </p>
+<div class="formItem">
+    <div class="formItem-Header">
+        <div class="formItem-Header-ProductName">
+            <img src="/images/icons/lata.png">
+            <span>Łata</span>
+        </div>
+        <div class="formItem-Header-Pricing">
+            <span id="nicePrice[${i}]" >
+                --- zł Netto / <strong>--- zł Brutto</strong>
+            </span>
+        </div>
+    </div>
+    <div class="formRow">
 
-        <p>
-            <label>Cena</label><br>
-            <input name="lata[price]" id="[${i}][cena]"  value=${LataPrice}>
-<!--            TODO mozna tu jebnac oninput ale wtedy trzeba podac counter i zmienic funkcje-->
-        </p>
+        <div class="formItem-Properties-Text">
+            <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                    <div class="bi"></div>
+                    <input name="lata[metryBiezace]" id="[${i}][x]" oninput="calculatePrice(${i})" class="featureInput" >
+                    <div class="bi"></div>
+                </div>
+                <span>Metry Bieżące</span>
+                
+         
+            </div>
+                              <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                        <div class="bi"></div>
+                        <input name="lata[description]" class="featureInput mediumFeatureInput">
+                        <div class="bi"></div>
+                    </div>
+                <span>Komentarz</span>
+            </div>
+        </div>
+        <div class="formItem-Properties-Checkboxes">
+            <div class="formItem-Properties-Checkboxes-Element">
+                <input type="checkbox" name="lata[painted]" >
+                <span>Impregnacja</span>
+            </div>
+
+        </div>
+
+        <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                    <div class="bi"></div>
+                    <input name="lata[price]" id="[${i}][cena]" oninput="calculatePrice(${i})"  value=${LataPrice} class="featureInput" >
+                    <div class="bi"></div>
+                </div>
+            <span>zł/m<sup>3</sup></span>
+        </div>
         
-    
-        <p>
-            <input name="lata[value]" id="Wartosc[${i}]" counter="${i}" oninput="zmienionoValue(this)" >
-            <button type="button" onclick="calculatePrice(id)" id="${i}">Oblicz cene</button>
-        </p>
-        </div>
-        </div>
+    </div>
+    <div class="formRow" style="justify-content: flex-end">
+            <button class="calculatePriceButtonSmall" type="button" onclick="calculatePrice(id)" id="${i}">Oblicz cenę</button>
+        <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                            <div class="di">
+                                <div class="bi"></div>
+                                <div class="bi"></div>
+                            </div>
+                        <input name="lata[value]" id="Wartosc[${i}]" counter="${i}" oninput="zmienionoValue(this)" class="featureInput finalFeatureInput">
+                            <div class="di">
+                                <div class="bi"></div>
+                                <div class="bi"></div>
+                            </div>
+                    </div>
+                <span><strong>BRUTTO</strong></span>
+            </div>
+        
+    </div>        
+</div>
 `;
 
     let container = document.getElementById('zamowienie-container');
@@ -383,30 +551,79 @@ document.getElementById('lata-button').onclick = function () {
 document.getElementById('kontrlata-button').onclick = function () {
 
     let template = `
-<div class="item">
-<div class="item-name">
-<h4>Kontrłata</h4>
-<span id="nicePrice[${i}]" >
---- zł Netto / <strong>--- zł Brutto</strong>
-</span>
-</div>
-<div class="item-properties">
-        <p>
-            <label>Metrow bierzacych</label><br>
-            <input name="kontrlata[metryBiezace]" id="[${i}][x]">
-        </p>
+<div class="formItem">
+    <div class="formItem-Header">
+        <div class="formItem-Header-ProductName">
+            <img src="/images/icons/kontrlata.png">
+            <span>Kontrłata</span>
+        </div>
+        <div class="formItem-Header-Pricing">
+            <span id="nicePrice[${i}]" >
+                --- zł Netto / <strong>--- zł Brutto</strong>
+            </span>
+        </div>
+    </div>
+    <div class="formRow">
+        <div class="formItem-Properties-Text">
+            <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                    <div class="bi"></div>
+                    <input name="kontrlata[metryBiezace]" oninput="calculatePrice(${i})" id="[${i}][x]" class="featureInput">
+                    <div class="bi"></div>
+                </div>
+                <span>Metry Bieżące</span>
+                
+         
+            </div>
+                              <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                        <div class="bi"></div>
+                        <input name="kontrlata[description]" class="featureInput mediumFeatureInput">
+                        <div class="bi"></div>
+                    </div>
+                <span>Komentarz</span>
+            </div>
+        </div>
+        <div class="formItem-Properties-Checkboxes">
+            <div class="formItem-Properties-Checkboxes-Element">
+                <input type="checkbox" name="kontrlata[painted]">
+                <span>Impregnacja</span>
+            </div>
 
-        <p>
-            <label>Cena</label><br>
-            <input name="kontrlata[price]" id="[${i}][cena]" value=${KontrlataPrice}>
-        </p>
-        <p>
-            <input name="kontrlata[value]" id="Wartosc[${i}]" counter="${i}" oninput="zmienionoValue(this)" >
-            <button type="button" onclick="calculatePrice(id)"  id="${i}">Oblicz cene</button>
-        </p>
         </div>
+
+        <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                    <div class="bi"></div>
+                    <input name="kontrlata[price]" id="[${i}][cena]" oninput="calculatePrice(${i})" value=${KontrlataPrice} class="featureInput"> 
+
+                    <div class="bi"></div>
+                </div>
+            <span>zł/m<sup>3</sup></span>
         </div>
-`;
+        
+    </div>
+    <div class="formRow" style="justify-content: flex-end">
+    <button type="button" class="calculatePriceButtonSmall" onclick="calculatePrice(id)"  id="${i}">Oblicz cene</button>
+
+        <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                            <div class="di">
+                                <div class="bi"></div>
+                                <div class="bi"></div>
+                            </div>
+                            <input name="kontrlata[value]" id="Wartosc[${i}]" counter="${i}" oninput="zmienionoValue(this)" class="featureInput finalFeatureInput">
+
+                            <div class="di">
+                                <div class="bi"></div>
+                                <div class="bi"></div>
+                            </div>
+                    </div>
+                <span><strong>BRUTTO</strong></span>
+            </div>
+        
+    </div>        
+</div>`;
 
     let container = document.getElementById('zamowienie-container');
     let div = document.createElement('div');
@@ -422,29 +639,78 @@ document.getElementById('kontrlata-button').onclick = function () {
 document.getElementById('opal-button').onclick = function () {
 
     let template =
-        `<div class="item">
-<div class="item-name">
-<h4>Opał</h4>
-<span id="nicePrice[${i}]" >
---- zł Netto / <strong>--- zł Brutto</strong>
-</span>
-</div>
-<div class="item-properties">
-        <p>
-            <label>Ilosc paczek</label><br>
-            <input name="opal[amount]" id="[${i}][x]">
-        </p>
+        `<div class="formItem">
+    <div class="formItem-Header">
+        <div class="formItem-Header-ProductName">
+            <img src="/images/icons/opal.png">
+            <span>Opał</span>
+        </div>
+        <div class="formItem-Header-Pricing">
+            <span id="nicePrice[${i}]" >
+                --- zł Netto / <strong>--- zł Brutto</strong>
+            </span>
+        </div>
+    </div>
+  <div class="formRow">
+        <div class="formItem-Properties-Text">
+            <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                    <div class="bi"></div>
+                    <input name="opal[amount]" id="[${i}][x]" oninput="calculatePrice(${i})" class="featureInput">
+                    <div class="bi"></div>
+                </div>
+                <span>Ilość</span>
+                
+         
+            </div>
+                              <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                        <div class="bi"></div>
+                        <input name="opal[description]" class="featureInput mediumFeatureInput center">
+                        <div class="bi"></div>
+                    </div>
+                <span>Gatunek drzewa</span>
+            </div>
+        </div>
+        <div class="formItem-Properties-Checkboxes">
+            <div class="formItem-Properties-Checkboxes-Element">
+                
+                <span></span>
+            </div>
 
-        <p>
-            <label>Cena</label><br>
-            <input name="opal[price]" id="[${i}][cena]" value=${OpalPrice}>
-        </p>
-        <p>
-            <input name="opal[value]" id="Wartosc[${i}]" counter="${i}" oninput="zmienionoValue(this)" >
-            <button type="button" onclick="calculatePrice(id)" counter="${i}"  id="${i}" >Oblicz cene</button>
-        </p>
+        </div>
+
+        <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                    <div class="bi"></div>
+                    <input name="opal[price]" id="[${i}][cena]" oninput="calculatePrice(${i})" value=${OpalPrice} class="featureInput">
+                    <div class="bi"></div>
+                </div>
+            <span>zł/m<sup>3</sup></span>
+        </div>
+        
+    </div>
+    <div class="formRow" style="justify-content: flex-end">
+    <button type="button" class="calculatePriceButtonSmall" onclick="calculatePrice(id)" counter="${i}"  id="${i}" >Oblicz cene</button>
+        <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                            <div class="di">
+                                <div class="bi"></div>
+                                <div class="bi"></div>
+                            </div>
+                            <input name="opal[value]" id="Wartosc[${i}]" counter="${i}" oninput="zmienionoValue(this)" class="featureInput finalFeatureInput">
+
+                            <div class="di">
+                                <div class="bi"></div>
+                                <div class="bi"></div>
+                            </div>
+                    </div>
+                <span><strong>BRUTTO</strong></span>
+            </div>
+        
+    </div>        
 </div>
-</div>`;
+`;
 
     let container = document.getElementById('zamowienie-container');
     let div = document.createElement('div');
@@ -463,28 +729,79 @@ document.getElementById('transport-button').onclick = function () {
 
     let template =
         `
-<div class="item">
-<div class="item-name">
-<h4>Transport</h4>
-<span id="nicePrice[${i}]" >
---- zł Netto / <strong>--- zł Brutto</strong>
-</span>
+<div class="formItem">
+    <div class="formItem-Header">
+        <div class="formItem-Header-ProductName">
+            <img src="/images/icons/transport.png">
+            <span>Transport</span>
+        </div>
+        <div class="formItem-Header-Pricing">
+            <span id="nicePrice[${i}]" >
+                --- zł Netto / <strong>--- zł Brutto</strong>
+            </span>
+        </div>
+    </div>
+    <div class="formRow">
+        <div class="formItem-Properties-Text">
+            <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                    <div class="bi"></div>
+                    <input name="transport[kilometers]" id="[${i}][x]" counter="${i}" oninput="calculatePrice(${i})" class="featureInput">
+                    <div class="bi"></div>
+                </div>
+                <span>Ilość</span>
+                
+         
+            </div>
+                              <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                        <div class="bi"></div>
+                        <input name="transport[description]" class="featureInput mediumFeatureInput">
+                        <div class="bi"></div>
+                    </div>
+                <span>Komentarz</span>
+            </div>
+        </div>
+        <div class="formItem-Properties-Checkboxes">
+            <div class="formItem-Properties-Checkboxes-Element">
+                
+                <span></span>
+            </div>
+
+        </div>
+
+        <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                    <div class="bi"></div>
+                    <input name="transport[price]" id="[${i}][cena]" counter="${i}" oninput="calculatePrice(${i})" value=${TransportPrice} class="featureInput">
+                    <div class="bi"></div>
+                </div>
+            <span>zł/m<sup>3</sup></span>
+        </div>
+        
+    </div>
+    <div class="formRow" style="justify-content: flex-end">
+    <button type="button" class="calculatePriceButtonSmall" onclick="calculatePrice(id)" counter="${i}"  id="${i}" >Oblicz cene</button>
+        <div class="formItem-Properties-Text-Feature">
+                <div class="formItem-Properties-Text-Feature-InputDiv">
+                            <div class="di">
+                                <div class="bi"></div>
+                                <div class="bi"></div>
+                            </div>
+                            <input name="transport[value]" id="Wartosc[${i}]" counter="${i}"  oninput="zmienionoValue(this)" class="featureInput finalFeatureInput">
+
+                            <div class="di">
+                                <div class="bi"></div>
+                                <div class="bi"></div>
+                            </div>
+                    </div>
+                <span><strong>BRUTTO</strong></span>
+            </div>
+          
+        
+    </div>  
+    
 </div>
-<div class="item-properties">
-        <p>
-            <label>Dystans [km]</label>
-            <input name="transport[kilometers]" id="[${i}][x]" counter="${i}" oninput="calculatePrice(${i})" >
-        </p>
-        <p>
-            <label>Stawka za km</label>
-            <input name="transport[value]" id="[${i}][cena]" counter="${i}" oninput="calculatePrice(${i})" >
-        </p>
-        <p>
-            <label>Cena</label>
-            <input name="transport[value]" id="Wartosc[${i}]" counter="${i}" value=${TransportPrice} oninput="zmienionoValue(this)" >
-        </p>
-        </div>
-        </div>
 `;
 
     let container = document.getElementById('zamowienie-container');

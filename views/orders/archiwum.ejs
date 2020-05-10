@@ -1,0 +1,257 @@
+<%- include("../partials/header.ejs")%>
+<div class="container">
+
+
+    <div class="grid-container">
+
+        <%ordixy.forEach(function(order){ %>
+        <%if(order.isDone){%>
+            <div class="orderThumbnail">
+                <div class="orderThumbnail-Header">
+                    <div class="orderThumbnail-Header-date">
+                        <span><%= order.created.toDateString()%></span>
+                    </div>
+                    <div class="orderThumbnail-Header-name">
+                        <span><a class="clientLink" href="/clients/<%=order.customer._id%>"><%=order.customer.name%> <%=order.customer.lastName%></a></span>
+                    </div>
+
+                </div>
+                <div class="orderThumbnail-Contact">
+                    <div class="orderThumbnail-Contact-Detail">
+                        <img src="/images/icons/phone.png" class="microIcon">
+                        <span><%=order.customer.telephone%></span>
+                    </div>
+                    <div class="orderThumbnail-Contact-Detail">
+                        <img src="/images/icons/geo.png" class="microIcon">
+                        <span><%=order.customer.address%>, <%=order.customer.town%></span>
+                    </div>
+
+                </div>
+
+                <div class="orderThumbnail-Content">
+                    <%if(order.drewnaKonstrukcyjne.length > 0 ){
+                    order.drewnaKonstrukcyjne.forEach(function(elmnt){ %>
+                        <div class="orderThumbnail-Content-Item">
+                            <div class="orderThumbnail-Content-Item-Header">
+                                <div class="orderThumbnail-Content-Item-Header-Name">
+                                    <img src="/images/icons/nature.png" class="orderThumbnailItemIcon">
+                                    <span class="orderThumbnailItemName">
+                                                Drewno Konstrukcyjne
+                                            </span>
+                                </div>
+                                <div class="orderThumbnail-Content-Item-Header-Value">
+                                            <span class="orderThumbnailItemValue">
+                                                <%= elmnt.value.toFixed(2) %> PLN
+                                            </span>
+                                </div>
+                            </div>
+                            <div class="orderThumbnail-Content-Item-Attributes">
+                                <div class="orderThumbnail-Content-Item-Attributes">
+                                    <div class="orderThumbnail-Content-Item-Attributes-feature">
+                                        <img src="/images/icons/volume.png" class="orderThumbnailAttributeIcon">
+                                        <span>Objętość: <%=elmnt.v%> m<sup>3</sup></span>
+                                    </div>
+                                    <div class="orderThumbnail-Content-Item-Attributes-feature">
+                                        <img src="/images/icons/lift.png" class="orderThumbnailAttributeIcon">
+                                        <span>Ilość: <%=elmnt.amount%> szt.</span>
+                                    </div>
+                                    <%if(elmnt.painted){%>
+                                        <div class="orderThumbnail-Content-Item-Attributes-feature">
+                                            <img src="/images/icons/paint.png" class="orderThumbnailAttributeIcon">
+                                            <span>Impregnacja: Tak</span>
+                                        </div>
+                                    <%}%>
+                                </div>
+                            </div>
+                        </div>
+                    <%})}%>
+                    <%if(order.calowki.length > 0 ){
+                    order.calowki.forEach(function(elmnt){ %>
+                        <div class="orderThumbnail-Content-Item">
+                            <div class="orderThumbnail-Content-Item-Header">
+                                <div class="orderThumbnail-Content-Item-Header-Name">
+                                    <img src="/images/icons/calowka.png" class="orderThumbnailItemIcon">
+                                    <span class="orderThumbnailItemName">
+                                                Deska Calówka
+                                            </span>
+                                </div>
+                                <div class="orderThumbnail-Content-Item-Header-Value">
+                                            <span class="orderThumbnailItemValue">
+                                                <%= elmnt.value.toFixed(2) %> PLN
+                                            </span>
+
+                                </div>
+                            </div>
+                            <div class="orderThumbnail-Content-Item-Attributes">
+                                <div class="orderThumbnail-Content-Item-Attributes">
+                                    <div class="orderThumbnail-Content-Item-Attributes-feature">
+                                        <img src="/images/icons/volume.png" class="orderThumbnailAttributeIcon">
+                                        <span>Objętość: <%=elmnt.v%> m<sup>3</sup></span>
+                                    </div>
+                                    <div class="orderThumbnail-Content-Item-Attributes-feature">
+                                        <img src="/images/icons/lift.png" class="orderThumbnailAttributeIcon">
+                                        <span><span>Ilość: <%=elmnt.amount%> szt.</span></span>
+                                    </div>
+                                    <%if(elmnt.painted){%>
+                                        <div class="orderThumbnail-Content-Item-Attributes-feature">
+                                            <img src="/images/icons/paint.png" class="orderThumbnailAttributeIcon">
+                                            <span>Impregnacja: Tak</span>
+                                        </div>
+                                    <%}%>
+                                </div>
+                            </div>
+                        </div>
+                    <%})}%>
+                    <%if(order.lata.value){%>
+                        <div class="orderThumbnail-Content-Item">
+                            <div class="orderThumbnail-Content-Item-Header">
+                                <div class="orderThumbnail-Content-Item-Header-Name">
+                                    <img src="/images/icons/lata.png" class="orderThumbnailItemIcon">
+                                    <span class="orderThumbnailItemName">
+                                                Łata
+                                            </span>
+                                </div>
+                                <div class="orderThumbnail-Content-Item-Header-Value">
+                                            <span class="orderThumbnailItemValue">
+                                                <%= order.lata.value.toFixed(2) %> PLN
+                                            </span>
+
+                                </div>
+                            </div>
+                            <div class="orderThumbnail-Content-Item-Attributes">
+                                <div class="orderThumbnail-Content-Item-Attributes">
+                                    <div class="orderThumbnail-Content-Item-Attributes-feature">
+                                        <img src="/images/icons/length.png" class="orderThumbnailAttributeIcon" id="tooSmallIcon">
+                                        <span>Metry bieżące: <%=order.lata.metryBiezace.toFixed(2)%></span>
+                                    </div>
+
+                                    <%if(order.lata.painted){%>
+                                        <div class="orderThumbnail-Content-Item-Attributes-feature">
+                                            <img src="/images/icons/paint.png" class="orderThumbnailAttributeIcon">
+                                            <span>Impregnacja: Tak</span>
+                                        </div>
+                                    <%}%>
+                                </div>
+                            </div>
+                        </div>
+                    <%}%>
+                    <%if(order.kontrlata.value){%>
+                        <div class="orderThumbnail-Content-Item">
+                            <div class="orderThumbnail-Content-Item-Header">
+                                <div class="orderThumbnail-Content-Item-Header-Name">
+                                    <img src="/images/icons/kontrlata.png" class="orderThumbnailItemIcon">
+                                    <span class="orderThumbnailItemName">
+                                                Kontrłata
+                                            </span>
+                                </div>
+                                <div class="orderThumbnail-Content-Item-Header-Value">
+                                            <span class="orderThumbnailItemValue">
+                                                <%= order.kontrlata.value.toFixed(2) %> PLN
+                                            </span>
+
+                                </div>
+                            </div>
+                            <div class="orderThumbnail-Content-Item-Attributes">
+                                <div class="orderThumbnail-Content-Item-Attributes">
+                                    <div class="orderThumbnail-Content-Item-Attributes-feature">
+                                        <img src="/images/icons/length.png" class="orderThumbnailAttributeIcon" id="tooSmallIcon">
+                                        <span>Metry bieżące: <%=order.kontrlata.metryBiezace.toFixed(2)%></span>
+                                    </div>
+
+                                    <%if(order.kontrlata.painted){%>
+                                        <div class="orderThumbnail-Content-Item-Attributes-feature">
+                                            <img src="/images/icons/paint.png" class="orderThumbnailAttributeIcon">
+                                            <span>Impregnacja: Tak</span>
+                                        </div>
+                                    <%}%>
+                                </div>
+                            </div>
+                        </div>
+                    <%}%>
+                    <%if(order.paczkaOpalu.value){%>
+                        <div class="orderThumbnail-Content-Item">
+                            <div class="orderThumbnail-Content-Item-Header">
+                                <div class="orderThumbnail-Content-Item-Header-Name">
+                                    <img src="/images/icons/opal.png" class="orderThumbnailItemIcon">
+                                    <span class="orderThumbnailItemName">
+                                                Opał
+                                            </span>
+                                </div>
+                                <div class="orderThumbnail-Content-Item-Header-Value">
+                                            <span class="orderThumbnailItemValue">
+                                                <%= order.paczkaOpalu.value.toFixed(2) %> PLN
+                                            </span>
+
+                                </div>
+                            </div>
+                            <div class="orderThumbnail-Content-Item-Attributes">
+                                <div class="orderThumbnail-Content-Item-Attributes">
+                                    <div class="orderThumbnail-Content-Item-Attributes-feature">
+                                        <img src="/images/icons/ilosc.png" class="orderThumbnailAttributeIcon" >
+                                        <span>Ilość: <%=order.paczkaOpalu.amount%></span>
+                                    </div>
+                                    <div class="orderThumbnail-Content-Item-Attributes-feature">
+                                        <img src="/images/icons/tree.png" class="orderThumbnailAttributeIcon" >
+                                        <span>Drzewo: Brzoza</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    <%}%>
+                    <%if(order.transport.value){%>
+                        <div class="orderThumbnail-Content-Item">
+                            <div class="orderThumbnail-Content-Item-Header">
+                                <div class="orderThumbnail-Content-Item-Header-Name">
+                                    <img src="/images/icons/transport.png" class="orderThumbnailItemIcon">
+                                    <span class="orderThumbnailItemName">
+                                                Transport
+                                            </span>
+                                </div>
+                                <div class="orderThumbnail-Content-Item-Header-Value">
+                                            <span class="orderThumbnailItemValue">
+                                                <%= order.transport.value.toFixed(2) %> PLN
+                                            </span>
+
+                                </div>
+                            </div>
+                            <div class="orderThumbnail-Content-Item-Attributes">
+                                <div class="orderThumbnail-Content-Item-Attributes">
+                                    <div class="orderThumbnail-Content-Item-Attributes-feature">
+                                        <img src="/images/icons/road.png" class="orderThumbnailAttributeIcon" >
+                                        <span>Kilometry: <%=order.transport.kilometers%> </span>
+                                        <%console.log(order.transport)%>
+                                    </div>
+                                    <div class="orderThumbnail-Content-Item-Attributes-feature">
+                                        <img src="/images/icons/calendar.png" class="orderThumbnailAttributeIcon" >
+                                        <span>Termin: 1 tydzień maja</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    <%}%>
+                </div>
+                <div class="orderThumbnail-Footer">
+                    <div class="orderThumbnail-Footer-Description">
+                        <span><%=order.description%></span>
+                    </div>
+                    <div class="orderThumbnail-Footer-ValueAndMore">
+                        <div class="orderThumbnail-Footer-ValueAndMore-Value">
+                            <span class="orderThumbnailValueSpan"><%=order.value.toFixed(2)%> PLN</span>
+                        </div>
+                        <div class="orderThumbnail-Footer-ValueAndMore-More">
+                            <a href="/orders/<%=order._id%>">Szczegóły</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        <%}%>
+        <%});%>
+
+    </div>
+
+</div>
+
+<%- include("../partials/footer.ejs")%>

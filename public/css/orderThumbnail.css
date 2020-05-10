@@ -1,4 +1,5 @@
 .orderThumbnail{
+    position: relative;
     color: #3d3d3d;
     font-weight: 600;
     display: flex;
@@ -7,7 +8,7 @@
     align-items: center;
     background-color: #f2f2f2;
     text-align: center;
-    padding: 20px 0;
+    padding: 20px 0 40px 0;
 
 
     box-shadow: 10px 10px 12px -5px rgba(150,150,150,1);
@@ -163,8 +164,19 @@
     width: 36px;
     margin-right: 15px;
 }
+.deadlineBar{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2px 0;
+    font-size: 0.8em;
+    text-align: center;
+    background-color: #f26e34;
+    color: white;
+}
 .orderThumbnailAttributeIcon{
-    width: 24px;
+    width: 20px;
     margin-right: 10px;
 }
 #tooSmallIcon{

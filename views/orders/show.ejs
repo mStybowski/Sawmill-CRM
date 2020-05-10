@@ -2,6 +2,8 @@
 <div class="container">
 
 <h3>Not ready yet</h3>
-
+    <form action="/orders/<%= order._id%>/done?_method=PUT" method="POST">
+        <button >done</button>
+    </form>
 </div>
 <%- include("../partials/footer.ejs")%>

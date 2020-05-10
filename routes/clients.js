@@ -1,4 +1,4 @@
-Client = require("../models/client");
+var Client = require("../models/client");
 var express = require("express");
 var middlewareObj = require("../middleware/index.js");
 var Order = require("../models/order");
@@ -14,6 +14,17 @@ router.get("/", middlewareObj.redirectIfNotLoggedIn, function(req, res){
         }
         else{
             res.render("clients/all", {clients: foundClients});
+        }
+    });
+});
+
+router.put("/:id", function(req, res){
+    Client.findByIdAndUpdate(req.params.id, req.body.client, function(err, updatedClient){
+        if(err)
+            res.redirect("/clients");
+        else{
+            req.flash("success", "Zaktualizowano dane klienta");
+            res.redirect("/clients/");
         }
     });
 });
@@ -38,6 +49,30 @@ router.post("/", middlewareObj.redirectIfNotLoggedIn, function(req, res){
             res.redirect("/clients/" + newlyCreatedClient._id);
         }
     })
+});
+router.get("/:id/edit", middlewareObj.redirectIfNotLoggedIn, function(req, res){
+
+    Client.findById(req.params.id, function(err, foundClient){
+        if(err){
+            req.flash("error", "Klient nie został znaleziony");
+            res.redirect("/");
+        }
+        else{
+            res.render("clients/edit", {customer: foundClient});
+        }
+    });
+});
+
+router.delete("/:id", function(req, res){
+    Client.findByIdAndDelete(req.params.id, (err) =>{
+        if(err){
+            res.redirect("/");
+        }
+        else {
+            req.flash("success", "Usunięto klienta");
+            res.redirect("/clients");
+        }
+    });
 });
 
 router.get("/:id", middlewareObj.redirectIfNotLoggedIn, function(req, res){

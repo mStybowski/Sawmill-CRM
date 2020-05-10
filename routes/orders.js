@@ -20,110 +20,58 @@ router.get("/", middlewareObj.redirectIfNotLoggedIn, (req, res)=>{
     });
 });
 
-// function handleOrderData(data){
-//
-//     var orderValue = 0;
-//
-//     var newLaty ={};
-//     var newKontrlaty = {};
-//     var newPaczkaOpalu = {};
-//     var newTransport = {};
-//
-//     var totalDrewnoValue = 0;
-//     var totalCalowkaValue = 0;
-//
-//     if(data.lata != null) {
-//         newLaty = {
-//             metryBiezace: data.lata.metryBiezace,
-//             price: data.lata.price,
-//             value: data.lata.value
-//         };
-//         orderValue += Number(data.lata.value);
-//     }
-//
-//     if(data.kontrlata != null) {
-//         newKontrlaty = {
-//             metryBiezace: data.kontrlata.metryBiezace,
-//             price: data.kontrlata.price,
-//             value: data.kontrlata.value
-//         };
-//         orderValue += Number(data.kontrlata.value);
-//     }
-//
-//     if(data.opal != null) {
-//         newPaczkaOpalu = {
-//             amount: data.opal.amount,
-//             price: data.opal.price,
-//             value: data.opal.value
-//         };
-//         orderValue += Number(data.opal.value);
-//     }
-//
-//     if(data.transport != null){
-//         newTransport = {transported: true, value: data.transport.value};
-//         orderValue += Number(data.transport.value);
-//     }
-//
-//     if(data.drewno != null) {
-//         data.drewno.forEach(function (elmnt) {
-//             totalDrewnoValue += Number(elmnt.value);
-//         });
-//     }
-//
-//     if(data.calowka != null) {
-//         data.calowka.forEach(function (elmnt) {
-//             totalCalowkaValue += Number(elmnt.value);
-//         });
-//     }
-//     orderValue += totalCalowkaValue + totalDrewnoValue;
-//
-//     return {
-//         name: "Nazwa zamowienia",
-//         lata: newLaty,
-//         kontrlata: newKontrlaty,
-//         paczkaOpalu: newPaczkaOpalu,
-//         transport: newTransport,
-//         value: orderValue
-//     };
-// }
 
+router.get("/newFromUser/:id", middlewareObj.redirectIfNotLoggedIn, function(req, res){
+
+    Price.findOne({}, function(err, found){
+        if(err)
+        {
+            console.log(err);
+            req.flash("error", "Nie udało się pobrać cen z serwera.");
+        }
+        else{
+            Client.findById(req.params.id, function(err, foundUser){
+                if(err || !foundUser){
+                    req.flash("error", "Klient nie został znaleziony");
+                    res.redirect("/");
+                }
+                else{
+                    res.render("orders/newFromUser", {clienter: foundUser, prices: found});
+                }
+            });
+
+        }
+    });
+
+
+});
 router.post("/", middlewareObj.redirectIfNotLoggedIn, function(req, res) {
 
     var orderValue = 0;
     var newLaty = {};
 
 
+
     if (req.body.lata != null) {
-        newLaty = {
-            metryBiezace: req.body.lata.metryBiezace,
-            price: req.body.lata.price,
-            value: req.body.lata.value
-        };
+        newLaty = req.body.lata;
         orderValue += Number(req.body.lata.value);
     }
     var newKontrlaty = {};
     if (req.body.kontrlata != null) {
-        newKontrlaty = {
-            metryBiezace: req.body.kontrlata.metryBiezace,
-            price: req.body.kontrlata.price,
-            value: req.body.kontrlata.value
-        };
+        newKontrlaty = req.body.kontrlata;
+
         orderValue += Number(req.body.kontrlata.value);
     }
     var newPaczkaOpalu = {};
 
     if (req.body.opal != null) {
-        newPaczkaOpalu = {
-            amount: req.body.opal.amount,
-            price: req.body.opal.price,
-            value: req.body.opal.value
-        };
+        newPaczkaOpalu = req.body.opal;
         orderValue += Number(req.body.opal.value);
     }
 
     var newTransport = {};
     if (req.body.transport != null) {
-        newTransport = {transported: true, value: req.body.transport.value};
+        newTransport = req.body.transport;
         orderValue += Number(req.body.transport.value);
     }
 
@@ -144,21 +92,27 @@ router.post("/", middlewareObj.redirectIfNotLoggedIn, function(req, res) {
                 elmnt.v = elmnt.x*elmnt.length*elmnt.amount;
         });
     }
-    console.log(req.body.calowka);
+
     orderValue += totalCalowkaValue + totalDrewnoValue;
 
 var newClientId;
 
-    Client.create(req.body.client, function(err, newlyCreatedClient){
-        if(err){
+if(req.body.client.id){
+    newClientId = req.body.client.id;
+}
+else{
+    Client.create(req.body.client, function (err, newlyCreatedClient) {
+        if (err) {
             console.log(err);
             req.flash("error", "Nie utworzono klienta");
             res.redirect("/");
-        }
-        else{
+        } else {
             newClientId = newlyCreatedClient._id;
         }
     });
+}
+
+console.log(req.body.drewno);
 
     var newOrder = new Order({
     name: "Nazwa zamowienia",
@@ -167,27 +121,10 @@ var newClientId;
     paczkaOpalu: newPaczkaOpalu,
     transport: newTransport,
     value: orderValue,
+        description: req.body.description,
+        deadline: req.body.deadline
+
     });
-
-    var idOrderu;
-    console.log("=============");
-console.log(req.body.calowka);
-    var newCalowki = new DeskaCalowka(req.body.calowka);
-    var newDrewno = new DrewnoKonstrukcyjne(req.body.drewno);
-
-    // Order.create(newOrder, function(err, newlyCreatedOrder){
-    //     if(err)
-    //     {
-    //         console.log("There is an error!");
-    //         res.redirect("/");
-    //     }
-    //     else
-    //     {
-    //         idOrderu = newlyCreatedOrder._id;
-    //
-    //     }
-    // });
-    //
 
     Order.create(newOrder, function (err, newlyCreatedOrder) {
         if (err) {
@@ -200,6 +137,7 @@ console.log(req.body.calowka);
                         console.log(err);
                         res.redirect("/");
                     } else {
+
                         newlyCreated.forEach(function (elmnt) {
                             newlyCreatedOrder.drewnaKonstrukcyjne.push(elmnt);
                         });
@@ -259,80 +197,7 @@ console.log(req.body.calowka);
             }
         }
     });
-
-
-
-
 });
-
-    //         if(req.body.calowka != null) {
-    //             DeskaCalowka.insertMany(req.body.calowka, function (err, newlyCreated) {
-    //                 if (err) {
-    //                     console.log(err);
-    //                     res.redirect("/");
-    //                 } else {
-    //                     newlyCreated.forEach(function (elmnt) {
-    //                         newlyCreatedOrder.calowki.push(elmnt);
-    //                     });
-    //                    // newlyCreatedOrder.save();
-    //
-    //                 }
-    //             });
-    //         }
-    //         newlyCreatedOrder.save();
-    //     }
-    // });
-
-
-    //=======
-
-
-    //==========
-    //sproboj albo wjebac newDrewna albo bezposrednio req.body.drewno :)
-
-    //
-    // Order.findById(idOrderu, function(err, foundOrder){
-    //     if(err)
-    //     {
-    //         console.log(err);
-    //         res.redirect("/");
-    //     }
-    //     else{
-    //         if(newCalowki != null){
-    //             newCalowki.forEach(function(elmnt){
-    //                 DeskaCalowka.create(elmnt, function(err, newlyCreatedCalowka){
-    //                     if(err)
-    //                     {
-    //                         console.log("Error w calowce");
-    //                     }
-    //                     else{
-    //                         foundOrder.calowki.push(newlyCreatedCalowka);
-    //                         console.log("FoundOrderZaraz Po wcisnieciu do niego calowki");
-    //                         console.log(foundOrder);
-    //                     }
-    //                 });
-    //             });
-    //         }
-    //         if(newDrewna != null){
-    //             newDrewna.forEach(function(elmnt){
-    //                 DrewnoKonstrukcyjne.create(elmnt, function(err, newlyCreatedDrewno){
-    //                     if(err)
-    //                     {
-    //                         console.log("Error w drewnie");
-    //                     }
-    //                     else{
-    //                         foundOrder.drewnaKonstrukcyjne.push(newlyCreatedDrewno);
-    //                         console.log("FoundOrderZaraz Po wcisnieciu do niego drewna");
-    //                         console.log(foundOrder);
-    //                     }
-    //                 });
-    //             });
-    //         }
-    //     }
-    //
-    // });
-
-
 
 router.get("/new", middlewareObj.redirectIfNotLoggedIn, function(req, res){
     Price.findOne({}, function(err, found){
@@ -343,6 +208,20 @@ router.get("/new", middlewareObj.redirectIfNotLoggedIn, function(req, res){
         }
         else{
             res.render("orders/new", {prices: found});
+        }
+    });
+
+});
+
+router.put("/:id/done", function(req, res){
+
+    var updateXD = {isDone: true};
+    Order.findByIdAndUpdate(req.params.id, updateXD, function(err, updatedClient){
+        if(err)
+            res.redirect("/clients");
+        else{
+            req.flash("success", "Zaktualizowano zamowienie");
+            res.redirect("/");
         }
     });
 

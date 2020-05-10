@@ -6,6 +6,11 @@ var OrderSchema = new mongoose.Schema({
     description: String,
     value: Number,
     discount: Number,
+    deadline: String,
+    isDone: {
+        type: Boolean,
+        default: false
+    },
     created:
         {
             type: Date,
@@ -28,10 +33,10 @@ var OrderSchema = new mongoose.Schema({
             ref: "Client"
         }
     ,
-    lata: {metryBiezace: Number, price: Number, value: Number},
-    kontrlata: {metryBiezace: Number, price: Number, value: Number},
-    paczkaOpalu: {amount: Number, price: Number, value: Number},
-    transport:  {transported: Boolean, value: Number}
+    lata: {metryBiezace: Number, price: Number, value: Number, painted: String, description: String},
+    kontrlata: {metryBiezace: Number, price: Number, value: Number, painted: String, description: String},
+    paczkaOpalu: {amount: Number, price: Number, value: Number, description: String},
+    transport:  {transported: Boolean, kilometers: Number, price: Number, value: Number, description: String, deadline: String}
 
 });
 

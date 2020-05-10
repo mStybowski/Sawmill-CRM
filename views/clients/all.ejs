@@ -47,7 +47,7 @@ function clientName(client){
                 <div class="clientThumbnail-ImageAndName-Name">
                      <%=client.lastName%> <%=client.name%>
                     <div>
-                        <a class="createNewOrderFromUser" href="/">
+                        <a class="createNewOrderFromUser" href="/orders/newfromuser/<%=client._id%>">
                         <img class="newOrderFromUserIcon" src="/images/icons/signs.png">
                         <span>Utwórz nowe zamówienie<span>
                         </a>

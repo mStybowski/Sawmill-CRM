@@ -2,15 +2,27 @@
 <div class="container">
 
     <form action="/clients" method="POST" class="standaloneForm">
-        <h2>Dodaj klienta</h2>
-        <input type="text" name="client[name]" placeholder="Imie">
-        <input type="text" name="client[lastName]" placeholder="Nazwisko">
-        <input type="text" name="client[nameFor]" placeholder="Nazwa firmy">
-        <input type="text" name="client[telephone]" placeholder="Telefon">
-        <input type="text" name="client[address]" placeholder="Adress">
-        <input type="text" name="client[description]" placeholder="Opis">
-        <input type="text" name="client[kilometers]" placeholder="Kilometry">
+        <h3 class="smallHeader">Dodaj klienta</h3>
+        <div class="orderInfoDiv">
+            <input type="text" name="client[name]" >
+            <label>Imię</label>
+            <input type="text" name="client[lastName]">
+            <label>Nazwisko</label>
 
+            <input type="text" name="client[telephone]">
+            <label>Telefon</label>
+
+            <input type="text" name="client[town]">
+            <label>Miejscowość</label>
+
+            <input type="text" name="client[address]">
+            <label>Adres</label>
+
+            <input type="text" name="client[description]">
+            <label>Opis</label>
+
+
+        </div>
         <input type="submit" value="Utwórz profil">
 
     </form>

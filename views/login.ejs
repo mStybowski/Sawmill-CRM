@@ -2,8 +2,17 @@
 <div class="container">
 
     <form action="/login" method="POST" class="standaloneForm login-form" >
-        <input type="text" name="username" placeholder="Nazwa użytkownika">
-        <input type="password" name="password" placeholder="Hasło">
+        <h3 class="smallHeader">Zaloguj się</h3>
+        <div class="orderInfoDiv">
+
+        <input type="text" id="usernameInputLogin" name="username" >
+            <label for="usernameInputLogin">Nazwa użytkownika</label>
+
+        <input type="password" id="passInputLogin" name="password" >
+            <label for="passInputLogin">Hasło</label>
+
+
+        </div>
         <input type="submit" value="Zaloguj">
     </form>
 </div>

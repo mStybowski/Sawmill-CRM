@@ -6,14 +6,7 @@ var ClientSchema = new mongoose.Schema({
     telephone: String,
     town: String,
     address: String,
-    description: String,
-    kilometers: Number,
-    orders: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Order"
-        }
-    ]
+    description: String
 });
 
 module.exports = mongoose.model("Client", ClientSchema);

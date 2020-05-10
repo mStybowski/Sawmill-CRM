@@ -14,9 +14,8 @@
     <link href="/css/orderThumbnail.css" rel="stylesheet" type="text/css">
     <link href="/css/clients.css" rel="stylesheet" type="text/css">
 
-
+    <link href="https://fonts.googleapis.com/css?family=Rajdhani:300,400,500,600,700&display=swap&subset=latin-ext" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Rajdhani&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Rajdhani|Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
 
@@ -50,6 +49,13 @@
                         </div>
                     </a>
                 </li>
+                <li><a href="/archiwum/page/1">
+                        <div class="topbarLink">
+                            <img src="/images/icons/archive.png" class="topbarLinkIcon">
+                            <span class="topbarLinkText">Archiwum zamówień</span>
+                        </div>
+                    </a>
+                </li>
                 <li><a href="/settings">
                         <div class="topbarLink">
                             <img src="/images/icons/settings.png" class="topbarLinkIcon">
@@ -62,11 +68,11 @@
             <ul class="AuthBar">
 
                 <% if(currentUser){%>
-                    <li><a href="/profile/<%= currentUser._id%>" >Zalogowano jako <span><%= currentUser.username%></span></a></li>
+                    <li><a href="" >Zalogowano jako <span><%= currentUser.username%></span></a></li>
                     <li><a href="/logout">Wyloguj</a></li>
                 <%}else{%>
                     <li><a href="/login">Login</a></li>
-                    <li><a href="/register">Register</a></li>
+
                 <%}%>
 
             </ul>
@@ -75,7 +81,7 @@
 
     </nav>
     <div class="admin">
-        <a href="/settings">
+        <a href="">
             <div class="topbarLink">
                 <img src="/images/icons/gear.png" class="topbarLinkIcon">
             </div>

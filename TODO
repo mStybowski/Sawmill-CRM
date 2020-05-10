@@ -7,6 +7,7 @@
 
 * FEATURES ADDED *
 - Od teraz w nicePrice wyświetla się także cena brutto którą można edytować z łapy w inpucie poniżej
+- Mozliwosc dodania nowego feature'a do pozycji: Impregnacja
 
 * CSS *
 - Dodane nagłówki dla każdej z pozycji
@@ -14,17 +15,39 @@
 * REFAKTORYZACJA *
 - Ulepszono kod calculator.js
 
+08.05.2020
+==========
+
+* BUG FIXES *
+-
+
+* FEATURES ADDED *
+- Od teraz wszystkie małe pozycje mają obliczaną cene automatycznie
+
+* CSS *
+- Wygląd nowego zamówienia ukończony
+
+* REFAKTORYZACJA *
+-
 
 
 
 
 
 TODO:
-- Dodawanie zamówień do istniejących klientów
 - Stworzenie strony zamówienia
 - Stworzenie strony klienta
-- CSS nowego zamówienia
-- Dodanie brakujacych inputow do zamowienia zgodnie z potrzebami
 - Sprawdzenie poprawności formularzy przed wysłaniem
- . Formularzy zamówienia
- . Formularzy nowego klienta
+
+====================
+ ✓ Data do każdego zamówienia na kiedy realizacja
+ ✓ Zapisanie pozycji heblowania dla drewna
+ ✓ Możliwość archiwizacji zamowienia
+ ✓ Możliwość odhaczenia zamówienia jako zrealizowane
+ ✓ Możliwość edycji klienta
+ ✓ Możliwość usunięcia klienta
+ ✓ Dodawanie zamówień do istniejących klientów
+ ✓ CSS nowego zamówienia
+ ✓ Dodanie brakujacych inputow do zamowienia zgodnie z potrzebami
+     ✓ - Impregnacja
+     ✓ - Komentarze

@@ -4,10 +4,13 @@ var deskaCalowkaSchema = new mongoose.Schema({
     v: Number,
     x: Number,
     length: Number,
-    hebel: [String],
+    htop: String,
+    hbottom: String,
     amount: Number,
     price: Number,
-    value: Number
+    value: Number,
+    painted: String,
+    heblowane: String
 });
 
 module.exports = mongoose.model("DeskaCalowka", deskaCalowkaSchema);

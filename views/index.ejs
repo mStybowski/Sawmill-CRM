@@ -9,10 +9,11 @@
                 <div class="orderThumbnail">
                     <div class="orderThumbnail-Header">
                         <div class="orderThumbnail-Header-date">
-                            <span><%= order.created.toDateString()%></span>
+
+                            <span><i><%= order.created.toDateString()%> </i></span>
                         </div>
                         <div class="orderThumbnail-Header-name">
-                            <span><a class="clientLink" href="/clients/id"><%=order.customer.name%> <%=order.customer.lastName%></a></span>
+                            <span><a class="clientLink" href="/clients/<%=order.customer._id%>"><%=order.customer.name%> <%=order.customer.lastName%></a></span>
                         </div>
 
                     </div>
@@ -55,6 +56,18 @@
                                                 <img src="/images/icons/lift.png" class="orderThumbnailAttributeIcon">
                                                 <span>Ilość: <%=elmnt.amount%> szt.</span>
                                             </div>
+                                            <%if(elmnt.painted){%>
+                                            <div class="orderThumbnail-Content-Item-Attributes-feature">
+                                                <img src="/images/icons/paint.png" class="orderThumbnailAttributeIcon">
+                                                <span>Impregnacja: Tak</span>
+                                            </div>
+                                            <%}%>
+                                            <%if(elmnt.heblowane){%>
+                                                <div class="orderThumbnail-Content-Item-Attributes-feature">
+                                                    <img src="/images/icons/heblowanie.png" class="orderThumbnailAttributeIcon">
+                                                    <span>Heblowanie: Tak</span>
+                                                </div>
+                                            <%}%>
                                         </div>
                                     </div>
                                 </div>
@@ -86,6 +99,18 @@
                                                 <img src="/images/icons/lift.png" class="orderThumbnailAttributeIcon">
                                                 <span><span>Ilość: <%=elmnt.amount%> szt.</span></span>
                                             </div>
+                                            <%if(elmnt.painted){%>
+                                                <div class="orderThumbnail-Content-Item-Attributes-feature">
+                                                    <img src="/images/icons/paint.png" class="orderThumbnailAttributeIcon">
+                                                    <span>Impregnacja: Tak</span>
+                                                </div>
+                                            <%}%>
+                                            <%if(elmnt.heblowane){%>
+                                                <div class="orderThumbnail-Content-Item-Attributes-feature">
+                                                    <img src="/images/icons/heblowanie.png" class="orderThumbnailAttributeIcon">
+                                                    <span>Heblowanie: Tak</span>
+                                                </div>
+                                            <%}%>
                                         </div>
                                     </div>
                                 </div>
@@ -112,10 +137,13 @@
                                                 <img src="/images/icons/length.png" class="orderThumbnailAttributeIcon" id="tooSmallIcon">
                                                 <span>Metry bieżące: <%=order.lata.metryBiezace.toFixed(2)%></span>
                                             </div>
-                                            <div class="orderThumbnail-Content-Item-Attributes-feature">
-                                                <img src="/images/icons/paint.png" class="orderThumbnailAttributeIcon">
-                                                <span>Impregnacja: Tak</span>
-                                            </div>
+
+                                            <%if(order.lata.painted){%>
+                                                <div class="orderThumbnail-Content-Item-Attributes-feature">
+                                                    <img src="/images/icons/paint.png" class="orderThumbnailAttributeIcon">
+                                                    <span>Impregnacja: Tak</span>
+                                                </div>
+                                            <%}%>
                                         </div>
                                     </div>
                                 </div>
@@ -142,10 +170,13 @@
                                                 <img src="/images/icons/length.png" class="orderThumbnailAttributeIcon" id="tooSmallIcon">
                                                 <span>Metry bieżące: <%=order.kontrlata.metryBiezace.toFixed(2)%></span>
                                             </div>
-                                            <div class="orderThumbnail-Content-Item-Attributes-feature">
-                                                <img src="/images/icons/paint.png" class="orderThumbnailAttributeIcon">
-                                                <span>Impregnacja: Tak</span>
-                                            </div>
+
+                                            <%if(order.kontrlata.painted){%>
+                                                <div class="orderThumbnail-Content-Item-Attributes-feature">
+                                                    <img src="/images/icons/paint.png" class="orderThumbnailAttributeIcon">
+                                                    <span>Impregnacja: Tak</span>
+                                                </div>
+                                            <%}%>
                                         </div>
                                     </div>
                                 </div>
@@ -174,7 +205,7 @@
                                             </div>
                                             <div class="orderThumbnail-Content-Item-Attributes-feature">
                                                 <img src="/images/icons/tree.png" class="orderThumbnailAttributeIcon" >
-                                                <span>Drzewo: Brzoza</span>
+                                                <span>Drzewo: <%=order.paczkaOpalu.description%></span>
                                             </div>
 
                                         </div>
@@ -201,12 +232,10 @@
                                         <div class="orderThumbnail-Content-Item-Attributes">
                                             <div class="orderThumbnail-Content-Item-Attributes-feature">
                                                 <img src="/images/icons/road.png" class="orderThumbnailAttributeIcon" >
-                                                <span>Kilometry: <%=order.customer.kilometers%></span>
+                                                <span>Kilometry: <%=order.transport.kilometers%> </span>
+
                                             </div>
-                                            <div class="orderThumbnail-Content-Item-Attributes-feature">
-                                                <img src="/images/icons/calendar.png" class="orderThumbnailAttributeIcon" >
-                                                <span>Termin: 1 tydzień maja</span>
-                                            </div>
+
 
                                         </div>
                                     </div>
@@ -215,7 +244,7 @@
                     </div>
                     <div class="orderThumbnail-Footer">
                         <div class="orderThumbnail-Footer-Description">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid animi debitis dignissimos, distinctio.</span>
+                            <span><%=order.description%></span>
                         </div>
                         <div class="orderThumbnail-Footer-ValueAndMore">
                             <div class="orderThumbnail-Footer-ValueAndMore-Value">
@@ -225,9 +254,14 @@
                                 <a href="/orders/<%=order._id%>">Szczegóły</a>
                             </div>
                         </div>
+
                     </div>
 
+                    <div class="deadlineBar">
+                        <span><%=order.deadline%></span>
+                    </div>
                 </div>
+
             <%});%>
 
         </div>

@@ -8,7 +8,15 @@ var Price = require("../models/price");
 var router = express.Router();
 
 router.get("/", middlewareObj.redirectIfNotLoggedIn, (req, res)=>{
-    Order.find({}).sort({ created: -1 }).limit(10).populate("calowki").populate("drewnaKonstrukcyjne").populate("customer").exec(function(err, found){
+    Order.find({isDone: false}).sort({ created: -1 }).populate("calowki").populate("drewnaKonstrukcyjne").populate("customer").exec(function(err, found){
+        res.render("index", {ordixy: found});
+    });
+
+
+});
+
+router.get("/archiwum/page/:pageNumber", middlewareObj.redirectIfNotLoggedIn, (req, res)=>{
+    Order.find({isDone: true}).sort({ created: -1 }).populate("calowki").populate("drewnaKonstrukcyjne").populate("customer").exec(function(err, found){
         res.render("index", {ordixy: found});
     });
 
@@ -46,7 +54,7 @@ router.post(
 
 router.put("/price", middlewareObj.redirectIfNotLoggedIn, function(req, res){
 
-    Price.findOneAndUpdate({}, req.body.prices, function(err, updatedPrices){
+    Price.findOneAndUpdate({}, req.body.prices,{useFindAndModify: false}, function(err, updatedPrices){
         if(err)
             console.log(err);
         //TODO

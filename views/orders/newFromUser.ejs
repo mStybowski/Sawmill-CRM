@@ -1,17 +1,14 @@
-<%- include("./partials/header.ejs")%>
+<%- include("../partials/header.ejs")%>
 <div class="container">
     <div class="standaloneForm">
-    <form action="/price/?_method=PUT" method="POST">
 
-        <div  class="formSection">
-
+        <div class="formSection">
             <div class="formSection-top">
-            <h2 class="formSectionHeader">Zaktualizuj ceny</h2><br>
+                <h2 class="formSectionHeader">Ceny dla nowego zamówienia</h2><br>
             </div>
 
             <div class="formSection-mid" id="priceTag">
                 <div class="priceLabel">
-
                     <span>zł/m<sup>3</sup></span>
                     <input type="text" name="prices[drewno]" class="priceTagInput" value="<%= prices.drewno%>" id="DrewnoPrice" oninput="updatePricesOnPage()">
 
@@ -49,6 +46,7 @@
                     <label>Opał</label>
                     <img src="/images/icons/opal.png" class="mediumProductIcon">
                 </div>
+
                 <div class="priceLabel">
                     <span>zł</span>
                     <input type="text" name="prices[transport]" class="priceTagInput" value="<%= prices.transport%>" id="TransportPrice" oninput="updatePricesOnPage()">
@@ -56,13 +54,58 @@
                     <img src="/images/icons/transport.png" class="mediumProductIcon">
                 </div>
             </div>
-
-            <div class="formSection-bottom" style="align-self: flex-end; margin-top: 50px; margin-right: 70px">
-                <input type="submit" value="Zapisz" class="innerFormSubmit">
-            </div>
         </div>
-
-    </form>
     </div>
+    <div class="standaloneForm">
+        <div class="formSection">
+            <div class="formSection-top">
+                <h2 class="formSectionHeader">Nowe zamówienie</h2><br>
+            </div>
+            <form action="/orders" method="POST">
+
+                <div class="formSection-mid">
+                    <div id="zamowienie-container">
+
+                    </div>
+                </div>
+
+                <div class="formSection-bottom">
+                    <div class="chooseItem">
+                        <button type="button" id="drewnoKonstrukcyjne-button"><img src="/images/icons/nature.png" class="smallIcon">Drewno Konstrukcyjne</button>
+                        <button type="button" id="calowka-button"><img src="/images/icons/calowka.png" class="smallIcon">Deska calówka</button>
+                        <button type="button" id="lata-button"><img src="/images/icons/lata.png" class="smallIcon">Łata</button>
+                        <button type="button" id="kontrlata-button"><img src="/images/icons/kontrlata.png" class="smallIcon XS">Kontrłata</button>
+                        <button type="button" id="opal-button"><img src="/images/icons/opal.png" class="smallIcon">Paczka opału</button>
+                        <button type="button" id="transport-button"><img src="/images/icons/transport.png" class="smallIcon">Transport</button>
+                    </div>
+                </div>
+                <div class="orderInfoDiv">
+                    <input type="text" name="description">
+                    <label>Opis zamówienia</label>
+                    <input type="text" name="deadline">
+                    <label>Termin wykonania</label>
+                </div>
+                <input style="display: none" type="text" name="client[name]" placeholder="Imię" value="<%=clienter.name%>">
+                <input style="display: none" type="text" name="client[lastName]" placeholder="Nazwisko" value="<%=clienter.lastName%>">
+                <input style="display: none" type="text" name="client[telephone]" placeholder="Numer telefonu" value="<%=clienter.telephone%>">
+                <input style="display: none" type="text" name="client[town]" placeholder="Miasto" value="<%=clienter.town%>">
+                <input style="display: none" type="text" name="client[address]" placeholder="Adres" value="<%=clienter.address%>">
+                <input  style="display: none" type="text" name="client[id]"  value="<%=clienter._id%>">
+
+                <input type="submit" >
+
+            </form>
+        </div>
+    </div>
+
 </div>
-<%- include("./partials/footer.ejs")%>
+<br><br>
+
+
+
+
+
+<script src="/js/calculator.js"></script>
+
+
+<%- include("../partials/footer.ejs")%>
