@@ -112,7 +112,7 @@ else{
     });
 }
 
-console.log(req.body.drewno);
+
 
     var newOrder = new Order({
     name: "Nazwa zamowienia",
