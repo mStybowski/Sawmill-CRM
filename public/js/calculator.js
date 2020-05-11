@@ -749,7 +749,7 @@ document.getElementById('transport-button').onclick = function () {
                     <input name="transport[kilometers]" id="[${i}][x]" counter="${i}" oninput="calculatePrice(${i})" class="featureInput">
                     <div class="bi"></div>
                 </div>
-                <span>Ilość</span>
+                <span>Kilometry</span>
                 
          
             </div>
