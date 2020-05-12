@@ -38,8 +38,11 @@ TODO:
 - Stworzenie strony zamówienia
 - Stworzenie strony klienta
 - Sprawdzenie poprawności formularzy przed wysłaniem
+- Dwa miejsca po przecinku w order cards w indexie
+- Zeby disabled przyciski sie nie podswietlaly
 
 ====================
+ ✓ usuwanie pozycji w formularzu
  ✓ Data do każdego zamówienia na kiedy realizacja
  ✓ Zapisanie pozycji heblowania dla drewna
  ✓ Możliwość archiwizacji zamowienia

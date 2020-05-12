@@ -20,8 +20,15 @@ function updatePricesOnPage(){
     TransportPrice = document.getElementById("TransportPrice").value;
 }
 
-function updateDisabled(elmntID){
+//te dwie funkcje polaczyc dodajac jeszcze jeden argument - boolean
+function disableElement(elmntID){
+
     document.getElementById(elmntID).disabled = true;
+}
+
+function enableElement(elmntID){
+
+    document.getElementById(elmntID).disabled = false;
 }
 
 function zmienionoValue(elmnt){
@@ -32,6 +39,15 @@ function zmienionoValue(elmnt){
 
 }
 
+function usunPozycje(idToDelete, isSimple, idToSimple){
+    var d = document.getElementById("zamowienie-container");
+    var d_zagniezdzony = document.getElementById(`div[${idToDelete}]`);
+    var usuwany_wezel = d.removeChild(d_zagniezdzony);
+
+    if(isSimple){
+        enableElement(idToSimple);
+    }
+}
 
 
 function calculateDrewnoKonstrukcyjnePrice(idToCount){
@@ -162,6 +178,19 @@ function checkIfNoDimensions(id){
     return x.length <= 0 && length.length <= 0 && ilosc.length <= 0;
 }
 
+function createNewObject(template){
+    let container = document.getElementById('zamowienie-container');
+    let div = document.createElement('div');
+    div.id = `div[${i}]`;
+    div.innerHTML = template;
+    container.appendChild(div);
+
+    let hebel = [false, false, false, false];
+    allHebels.push(hebel);
+
+    i++;
+}
+
 function disableVolume(elmnt){
     let idToCount = elmnt.getAttribute("counter");
     if(elmnt.value){
@@ -178,14 +207,18 @@ document.getElementById('drewnoKonstrukcyjne-button').onclick = function () {
     let template = `
 <div class="formItem">
     <div class="formItem-Header">
+    
         <div class="formItem-Header-ProductName">
             <img src="/images/icons/nature.png">
             <span>Drewno Konstrukcyjne</span>
         </div>
+        
         <div class="formItem-Header-Pricing">
             <span id="nicePrice[${i}]" >
                 --- zł Netto / <strong>--- zł Brutto</strong>
             </span>
+                    <button type="button" class="deleteButton" onclick="usunPozycje(${i})" counter="${i}">Usuń</button>
+
         </div>
     </div>
     <div class="formRow">
@@ -257,19 +290,19 @@ document.getElementById('drewnoKonstrukcyjne-button').onclick = function () {
             </div>
             <div class="hebelWrapper">
             <div class="wrapper-top" >
-                <div class="top" pos="0" counter="${i}" rodzaj="drewno" identifier= "[0]${i}" onclick="handleHebel(this)" >
+                <div class="top" pos="0" counter="${i}" rodzaj="drewno" identifier="[0]${i}" onclick="handleHebel(this)" >
         
                 </div>
             </div>
             
             <div class="wrapper-mid"">
-                <div class="mid" pos="3" counter="${i}" rodzaj="drewno" identifier= "[3]${i}" onclick="handleHebel(this)" >
+                <div class="mid" pos="3" counter="${i}" rodzaj="drewno" identifier="[3]${i}" onclick="handleHebel(this)" >
 
                 </div>
                 <div class="mid centerly">
 
                 </div>
-                <div class="mid" pos="1" counter="${i}" rodzaj="drewno" identifier= "[1]${i}" onclick="handleHebel(this)" >
+                <div class="mid" pos="1" counter="${i}" rodzaj="drewno" identifier="[1]${i}" onclick="handleHebel(this)" >
 
                 </div>
             </div>
@@ -306,15 +339,8 @@ document.getElementById('drewnoKonstrukcyjne-button').onclick = function () {
 
 `;
 
-    let container = document.getElementById('zamowienie-container');
-    let div = document.createElement('div');
-    div.innerHTML = template;
-    container.appendChild(div);
+    createNewObject(template);
 
-    let hebel = [false, false, false, false];
-    allHebels.push(hebel);
-
-i++;
 };
 
 document.getElementById('calowka-button').onclick = function () {
@@ -330,6 +356,7 @@ document.getElementById('calowka-button').onclick = function () {
             <span id="nicePrice[${i}]" >
                 --- zł Netto / <strong>--- zł Brutto</strong>
             </span>
+            <button type="button" class="deleteButton" onclick="usunPozycje(${i}, false)" counter="${i}">Usuń</button>
         </div>
     </div>
     <div class="formRow">
@@ -443,21 +470,14 @@ document.getElementById('calowka-button').onclick = function () {
 
                 <div style="display:none">
 <!--            TODO-->
+
                 <input type="checkbox" name="calowka[${i}][htop]" id="[${i}][0]">
                 <input type="checkbox" name="calowka[${i}][hright]" id="[${i}][1]">
                 <input type="checkbox" name="calowka[${i}][hbottom]" id="[${i}][2]">
                 <input type="checkbox" name="calowka[${i}][hleft]" id="[${i}][3]">
          </div>
 `;
-
-    let container = document.getElementById('zamowienie-container');
-    let div = document.createElement('div');
-    div.innerHTML = template;
-    container.appendChild(div);
-
-    let hebel = [false, false, false, false];
-    allHebels.push(hebel);
-    i++;
+    createNewObject(template);
 
 };
 document.getElementById('lata-button').onclick = function () {
@@ -474,6 +494,8 @@ document.getElementById('lata-button').onclick = function () {
             <span id="nicePrice[${i}]" >
                 --- zł Netto / <strong>--- zł Brutto</strong>
             </span>
+                                <button type="button" class="deleteButton" onclick="usunPozycje(${i}, true, 'lata-button')" >Usuń</button>
+
         </div>
     </div>
     <div class="formRow">
@@ -536,17 +558,10 @@ document.getElementById('lata-button').onclick = function () {
     </div>        
 </div>
 `;
+    createNewObject(template);
 
-    let container = document.getElementById('zamowienie-container');
-    let div = document.createElement('div');
-    div.innerHTML = template;
-    container.appendChild(div);
-
-    let hebel = [false, false, false, false];
-    allHebels.push(hebel);
-    i++;
     isLata = true;
-    updateDisabled("lata-button");
+    disableElement("lata-button");
 };
 document.getElementById('kontrlata-button').onclick = function () {
 
@@ -561,6 +576,8 @@ document.getElementById('kontrlata-button').onclick = function () {
             <span id="nicePrice[${i}]" >
                 --- zł Netto / <strong>--- zł Brutto</strong>
             </span>
+                                <button type="button" class="deleteButton" onclick="usunPozycje(${i}, true, 'kontrlata-button')" >Usuń</button>
+
         </div>
     </div>
     <div class="formRow">
@@ -624,17 +641,10 @@ document.getElementById('kontrlata-button').onclick = function () {
         
     </div>        
 </div>`;
+    createNewObject(template);
 
-    let container = document.getElementById('zamowienie-container');
-    let div = document.createElement('div');
-    div.innerHTML = template;
-    container.appendChild(div);
-
-    let hebel = [false, false, false, false];
-    allHebels.push(hebel);
-    i++;
     isKontrlata = true;
-    updateDisabled("kontrlata-button");
+    disableElement("kontrlata-button");
 };
 document.getElementById('opal-button').onclick = function () {
 
@@ -649,6 +659,8 @@ document.getElementById('opal-button').onclick = function () {
             <span id="nicePrice[${i}]" >
                 --- zł Netto / <strong>--- zł Brutto</strong>
             </span>
+                                <button type="button"class="deleteButton" onclick="usunPozycje(${i}, true, 'opal-button')" >Usuń</button>
+
         </div>
     </div>
   <div class="formRow">
@@ -711,17 +723,10 @@ document.getElementById('opal-button').onclick = function () {
     </div>        
 </div>
 `;
+    createNewObject(template);
 
-    let container = document.getElementById('zamowienie-container');
-    let div = document.createElement('div');
-    div.innerHTML = template;
-    container.appendChild(div);
-
-    let hebel = [false, false, false, false];
-    allHebels.push(hebel);
-    i++;
     isOpal = true;
-    updateDisabled("opal-button");
+    disableElement("opal-button");
 };
 
 document.getElementById('transport-button').onclick = function () {
@@ -739,6 +744,8 @@ document.getElementById('transport-button').onclick = function () {
             <span id="nicePrice[${i}]" >
                 --- zł Netto / <strong>--- zł Brutto</strong>
             </span>
+                                <button type="button" class="deleteButton" onclick="usunPozycje(${i}, true, 'transport-button')" >Usuń</button>
+
         </div>
     </div>
     <div class="formRow">
@@ -803,15 +810,8 @@ document.getElementById('transport-button').onclick = function () {
     
 </div>
 `;
+    createNewObject(template);
 
-    let container = document.getElementById('zamowienie-container');
-    let div = document.createElement('div');
-    div.innerHTML = template;
-    container.appendChild(div);
-
-    let hebel = [false, false, false, false];
-    allHebels.push(hebel);
-    i++;
-    isOpal = true;
-    updateDisabled("transport-button");
+    isTransport = true;
+    disableElement("transport-button");
 };

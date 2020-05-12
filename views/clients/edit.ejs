@@ -2,14 +2,25 @@
 <div class="container">
 
     <form action="/clients/<%=customer._id%>/?_method=PUT" method="POST" class="standaloneForm">
-        <h2>Edytuj dane Klienta</h2>
-        <input type="text" name="client[name]" placeholder="Imie" value="<%=customer.name%>">
-        <input type="text" name="client[lastName]" placeholder="Nazwisko" value="<%=customer.lastName%>">
-        <input type="text" name="client[telephone]" placeholder="Telefon" value="<%=customer.telephone%>">
-        <input type="text" name="client[town]" placeholder="Miasto" value="<%=customer.town%>">
-        <input type="text" name="client[address]" placeholder="Adress" value="<%=customer.address%>">
-        <input type="text" name="client[description]" placeholder="Opis" value="<%=customer.description%>">
+        <h3 class="smallHeader">Edytuj dane Klienta</h3>
+        <div class="orderInfoDiv">
 
+        <input type="text" name="client[name]" value="<%=customer.name%>">
+            <label>Imię</label>
+        <input type="text" name="client[lastName]" value="<%=customer.lastName%>">
+            <label>Nazwisko</label>
+            <input type="text" name="client[telephone]" value="<%=customer.telephone%>">
+            <label>Telefon</label>
+            <input type="text" name="client[town]" value="<%=customer.town%>">
+            <label>Miejscowość</label>
+
+            <input type="text" name="client[address]" value="<%=customer.address%>">
+            <label>Adres</label>
+
+            <input type="text" name="client[description]"  value="<%=customer.description%>">
+            <label>Opis</label>
+
+        </div>
         <input type="submit" value="Zapisz">
 
     </form>
