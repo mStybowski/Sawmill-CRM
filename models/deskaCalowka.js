@@ -10,7 +10,8 @@ var deskaCalowkaSchema = new mongoose.Schema({
     price: Number,
     value: Number,
     painted: String,
-    heblowane: String
+    heblowane: String,
+    description: String
 });
 
 module.exports = mongoose.model("DeskaCalowka", deskaCalowkaSchema);

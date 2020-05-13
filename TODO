@@ -35,13 +35,19 @@
 
 
 TODO:
+GOD TIER
 - Stworzenie strony zamówienia
 - Stworzenie strony klienta
+
+MEDIUM
 - Sprawdzenie poprawności formularzy przed wysłaniem
 - Dwa miejsca po przecinku w order cards w indexie
+
+COSMETICS
 - Zeby disabled przyciski sie nie podswietlaly
 
 ====================
+ ✓ Mozliwosc usuniecia klientow przy dalszym dzialaniu zamowien od nich
  ✓ usuwanie pozycji w formularzu
  ✓ Data do każdego zamówienia na kiedy realizacja
  ✓ Zapisanie pozycji heblowania dla drewna

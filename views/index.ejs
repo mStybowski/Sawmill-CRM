@@ -13,18 +13,28 @@
                             <span><i><%= order.created.toDateString()%> </i></span>
                         </div>
                         <div class="orderThumbnail-Header-name">
+                            <%if(order.customer){%>
                             <span><a class="clientLink" href="/clients/<%=order.customer._id%>"><%=order.customer.name%> <%=order.customer.lastName%></a></span>
+
                         </div>
 
                     </div>
                     <div class="orderThumbnail-Contact">
                         <div class="orderThumbnail-Contact-Detail">
+
+
                             <img src="/images/icons/phone.png" class="microIcon">
                             <span><%=order.customer.telephone%></span>
+
+
                         </div>
                         <div class="orderThumbnail-Contact-Detail">
+
+
                             <img src="/images/icons/geo.png" class="microIcon">
                             <span><%=order.customer.address%>, <%=order.customer.town%></span>
+                            <%}%>
+
                         </div>
 
                     </div>

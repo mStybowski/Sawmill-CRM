@@ -295,7 +295,7 @@ document.getElementById('drewnoKonstrukcyjne-button').onclick = function () {
                 </div>
             </div>
             
-            <div class="wrapper-mid"">
+            <div class="wrapper-mid">
                 <div class="mid" pos="3" counter="${i}" rodzaj="drewno" identifier="[3]${i}" onclick="handleHebel(this)" >
 
                 </div>
@@ -435,7 +435,7 @@ document.getElementById('calowka-button').onclick = function () {
                 </div>
             </div>
             
-            <div class="wrapper-mid"">
+            <div class="wrapper-mid">
 
                 <div class="mid centerly">
 

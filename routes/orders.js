@@ -228,7 +228,7 @@ router.put("/:id/done", function(req, res){
 });
 
 router.get("/:id", middlewareObj.redirectIfNotLoggedIn, function(req, res){
-    Order.findById(req.params.id).populate("drewnaKonstrukcyjne").populate("calowki").exec(function(err, foundOrder){
+    Order.findById(req.params.id).populate("drewnaKonstrukcyjne").populate("calowki").populate("drewnaKonstrukcyjne").populate("customer").exec(function(err, foundOrder){
         if(err){
             console.log(err);
             res.redirect("/");

@@ -51,21 +51,12 @@ a{
 li img{
     width: 40px;
 }
-@media (max-width: 1150px) {
+@media (max-width: 1100px) {
     .grid-container{
-        grid-template-columns: 267px 267px 267px; /*Make the grid smaller than the container*/
+        grid-template-columns: 470px; /*Make the grid smaller than the container*/
     }
 }
-@media (max-width: 850px) {
-    .grid-container{
-        grid-template-columns: 250px 250px; /*Make the grid smaller than the container*/
-    }
-}
-@media (max-width: 600px) {
-    .grid-container{
-        grid-template-columns: 80%; /*Make the grid smaller than the container*/
-    }
-}
+
 
 /*FORMS*/
 form{
@@ -367,7 +358,7 @@ margin: 15px 0;
     flex-direction: column;
     justify-content: space-between;
     width: 80px;
-    height:50px;
+    height: 50px;
 
 }
 .wrapper-top, .wrapper-mid, .wrapper-bot {

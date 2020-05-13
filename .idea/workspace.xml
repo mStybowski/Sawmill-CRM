@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24751351-93bd-4288-aa29-ea210e08a968" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/css/orderDetails.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TODO" beforeDir="false" afterPath="$PROJECT_DIR$/TODO" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/form.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/form.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/deskaCalowka.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/deskaCalowka.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/calculator.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/calculator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/clients/edit.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/clients/edit.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/orders/new.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/orders/new.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/orders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/orders/show.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/orders/show.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partials/footer.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/footer.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/partials/header.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/header.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +22,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -33,6 +38,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -42,13 +48,13 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\mstyb\Desktop\Projects\Tartak\views\orders" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\mstyb\Desktop\Projects\Tartak\views\orders" />
       <recent name="C:\Users\mstyb\Desktop\Projects\Tartak\views" />
       <recent name="C:\Users\mstyb\Desktop\Projects\Tartak" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mstyb\Desktop\Projects\Tartak\views\orders" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -107,7 +113,12 @@
       <workItem from="1589109017248" duration="7185000" />
       <workItem from="1589182929657" duration="314000" />
       <workItem from="1589204760479" duration="2132000" />
-      <workItem from="1589275098171" duration="3779000" />
+      <workItem from="1589275098171" duration="6673000" />
+      <workItem from="1589295554487" duration="32000" />
+      <workItem from="1589295672473" duration="2237000" />
+      <workItem from="1589312016090" duration="3718000" />
+      <workItem from="1589322084762" duration="2590000" />
+      <workItem from="1589358108426" duration="4343000" />
     </task>
     <servers />
   </component>
