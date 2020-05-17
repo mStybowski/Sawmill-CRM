@@ -1,30 +1,3 @@
-// var options = {
-//     "header": {
-//         "height": "45mm",
-//         "contents": '<div style="text-align: center;">Author: Marc Bachmann</div>'
-//     },
-//     "footer": {
-//         "height": "28mm",
-//         "contents": {
-//             first: 'Cover page',
-//             2: 'Second page', // Any page number is working. 1-based index
-//             default: '<span style="color: #444;">{{page}}</span>/<span>{{pages}}</span>', // fallback value
-//             last: 'Last Page'
-//         }
-//     }
-// };
-
-// pdf.create(html, options).toFile('./businesscard.pdf', function(err, res) {
-//     if (err) return console.log(err);
-//     console.log(res); // { filename: '/app/businesscard.pdf' }
-// });
-
-// fs.unlink("./elo.txt", (err) => {
-//     if (err) {
-//         console.error(err)
-//     }
-// });
-
 var express     = require("express"),
     app         = express(),
     bodyParser  = require("body-parser"),
@@ -38,7 +11,7 @@ var express     = require("express"),
 
 const url = 'mongodb://127.0.0.1:27017/tartak';
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
-const db = mongoose.connection
+const db = mongoose.connection;
 db.once('open', _ => {
     console.log('Database connected to:', url)
 });
@@ -82,7 +55,30 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+var fonts = {
+    Roboto: {
+        normal: 'fonts/Roboto-Regular.ttf',
+        bold: 'fonts/Roboto-Medium.ttf',
+        italics: 'fonts/Roboto-Italic.ttf',
+        bolditalics: 'fonts/Roboto-MediumItalic.ttf'
+    }
+};
 
+var PdfPrinter = require('pdfmake');
+var printer = new PdfPrinter(fonts);
+var fs = require('fs');
+
+var docDefinition = {
+    content:["elo"]
+};
+
+var options = {
+    // ...
+}
+
+var pdfDoc = printer.createPdfKitDocument(docDefinition, options);
+pdfDoc.pipe(fs.createWriteStream('document.pdf'));
+pdfDoc.end();
 
 app.use("/", indexRoutes);
 app.use("/orders", ordersRoutes);

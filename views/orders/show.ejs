@@ -64,7 +64,7 @@
         </div>
     </div>
     <div class="orderDescription">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium asperiores aspernatu.
+        <%=order.description%>
     </div>
     <%order.drewnaKonstrukcyjne.forEach(function(elmnt){%>
         <div class="order-item dfCcac">
@@ -346,20 +346,6 @@
 <%- include("../partials/footer.ejs")%>
 
 
+
 <script>
-
-
-    var test = document.getElementsByClassName("nb")[0];
-
-    test.addEventListener("mouseenter", function( event ) {
-        // highlight the mouseover target
-        let currentHTML = test.innerHTML;
-        let currentAmount = Number(test.innerHTML);
-        event.target.innerHTML = (currentAmount/1.23).toFixed(2);
-
-        // reset the color after a short delay
-        setTimeout(function() {
-            event.target.innerHTML = currentHTML;
-        }, 500);
-    }, false);
 </script>

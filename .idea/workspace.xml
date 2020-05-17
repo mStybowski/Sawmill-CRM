@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24751351-93bd-4288-aa29-ea210e08a968" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/css/orderDetails.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TODO" beforeDir="false" afterPath="$PROJECT_DIR$/TODO" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/deskaCalowka.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/deskaCalowka.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/calculator.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/calculator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/orders.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/orders/show.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/orders/show.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partials/footer.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/footer.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partials/header.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/header.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +17,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -48,13 +43,13 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mstyb\Desktop\Projects\Tartak\views\orders" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\mstyb\Desktop\Projects\Tartak\views\orders" />
       <recent name="C:\Users\mstyb\Desktop\Projects\Tartak\views" />
       <recent name="C:\Users\mstyb\Desktop\Projects\Tartak" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\mstyb\Desktop\Projects\Tartak\views\orders" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -118,7 +113,10 @@
       <workItem from="1589295672473" duration="2237000" />
       <workItem from="1589312016090" duration="3718000" />
       <workItem from="1589322084762" duration="2590000" />
-      <workItem from="1589358108426" duration="4343000" />
+      <workItem from="1589358108426" duration="4943000" />
+      <workItem from="1589382005636" duration="2955000" />
+      <workItem from="1589400236862" duration="1123000" />
+      <workItem from="1589727137226" duration="908000" />
     </task>
     <servers />
   </component>
@@ -130,6 +128,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="706" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588842869127" />
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589385873950">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589385873950" />
     <state x="623" y="225" key="search.everywhere.popup" timestamp="1588409373964">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
