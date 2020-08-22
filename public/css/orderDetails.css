@@ -3,6 +3,11 @@
     align-items: center;
     justify-content: flex-start;
 }
+.dfRfe{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
 .dfRcac{
     display: flex;
     align-items: center;
@@ -39,8 +44,8 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: 800px;
-    margin:auto;
+    width: 720px;
+    margin: 20px auto;
     font-weight: 600;
     background-color: #f2f2f2;
     text-align: center;
@@ -108,6 +113,7 @@
 .orderTitle{
     font-size: 2em;
     text-transform: uppercase;
+    padding: 0 33px;
 }
 
 .orderDeadline{

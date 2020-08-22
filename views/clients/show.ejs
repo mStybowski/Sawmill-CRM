@@ -1,15 +1,46 @@
 <%- include("../partials/header.ejs")%>
 
-<div class="container">
+<div class="client dfCsbac">
+    <div class="clientRow dfRsbac">
+        <div class="clientPhotoNamePhone dfRsbac">
+            <div class="ClientImageWrapper">
+                <img src="/images/icons/client.png">
+            </div>
+            <div class="clientGeneralInfo">
+                <p id="clientName"><%=person.name%> <%=person.lastName%></p>
+                <div class="dfRfsac">
+                    <img class="clientThumbnailIcon" src="/images/icons/geo.png">
+                    <p><%=person.town%>, <%=person.address%></p>
+                </div>
+                <div class="dfRfsac">
+                    <img class="clientThumbnailIcon" src="/images/icons/miscellaneous.png">
+                    <p>Tel.: <%=person.telephone%></p>
+                </div>
 
-    <p><%=person.name%> <%=person.lastName%></p>
-    <p><%=person.description%></p>
-    <h3>Adres:</h3>
-    <p><%=person.address%></p>
-    <p>Tel.: <%=person.telephone%></p>
-    <form action="/clients/<%= person._id%>?_method=DELETE" method="POST">
-        <button >USUŃ KLIENTA</button>
-    </form>
+            </div>
+        </div>
+        <div class="clientButtons dfCsbac">
+            <a href="/orders/newfromuser/<%=person._id%>">
+                <span class="spanButtonClient">Dodaj zamówienie</span>
+            </a>
+            <a href="/orders/forclient/<%=person._id%>">
+                <span class="spanButtonClient">Zamówienia</span>
+            </a>
+        </div>
+    </div>
+    <div class="clientRowAddress">
+        <p><%=person.description%></p>
+    </div>
+    <div class="clientRowButtons dfRfe">
+        <form style="display: inline-block; width: 120px" action="/clients/<%= person._id%>?_method=DELETE" method="POST">
+            <button class="deleteClientButton">USUŃ KLIENTA</button>
+        </form>
+        <a href="<%=person._id%>/edit">
+            <span class="spanButtonClient">Edytuj</span>
+        </a>
+
+    </div>
+
 </div>
 
 <%- include("../partials/footer.ejs")%>

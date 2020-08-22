@@ -8,17 +8,9 @@ var DrewnoKonstrukcyjne = require("../models/drewnoKonstrukcyjne");
 var DeskaCalowka = require("../models/deskaCalowka");
 var Price = require("../models/price");
 var Client = require("../models/client");
-
-router.get("/", middlewareObj.redirectIfNotLoggedIn, (req, res)=>{
-    Order.find({}, function (err, found) {
-        if (err) {
-            console.log(err);
-            res.redirect("/");
-        } else {
-            res.render("/", {orders: found});
-        }
-    });
-});
+var pdfObject = require("../pdf/roboczy");
+var fs = require("fs");
+const path = require('path');
 
 
 router.get("/newFromUser/:id", middlewareObj.redirectIfNotLoggedIn, function(req, res){
@@ -45,6 +37,24 @@ router.get("/newFromUser/:id", middlewareObj.redirectIfNotLoggedIn, function(req
 
 
 });
+
+router.get("/forclient/:clientid", function(req, res){
+
+    Client.findById(req.params.clientid, function(err, foundUser){
+        if(err){
+            req.flash("error", "Nie znaleziono takiego klienta");
+            req.redirect("/");
+        }
+        else{
+            Order.find({customer: foundUser}).sort({ created: -1 }).populate("calowki").populate("drewnaKonstrukcyjne").populate("customer").exec(function (err, foundOrders){
+
+                res.render("index", {ordixy: foundOrders});
+            });
+        }
+    });
+
+});
+
 router.post("/", middlewareObj.redirectIfNotLoggedIn, function(req, res) {
 
     var orderValue = 0;
@@ -81,7 +91,7 @@ router.post("/", middlewareObj.redirectIfNotLoggedIn, function(req, res) {
     if (req.body.drewno != null) {
         req.body.drewno.forEach(function (elmnt) {
             totalDrewnoValue += Number(elmnt.value);
-            elmnt.v = elmnt.x*elmnt.y*elmnt.length*elmnt.amount;
+            elmnt.v = (elmnt.x*elmnt.y*elmnt.length*elmnt.amount).toFixed(3);
         });
 
     }
@@ -89,7 +99,7 @@ router.post("/", middlewareObj.redirectIfNotLoggedIn, function(req, res) {
         req.body.calowka.forEach(function (elmnt) {
             totalCalowkaValue += Number(elmnt.value);
             if(elmnt.v === "" )
-                elmnt.v = elmnt.x*elmnt.length*elmnt.amount;
+                elmnt.v = (elmnt.x*elmnt.length*elmnt.amount).toFixed(3);
         });
     }
 
@@ -235,6 +245,33 @@ router.get("/:id", middlewareObj.redirectIfNotLoggedIn, function(req, res){
         }
         else{
             res.render("orders/show", {order: foundOrder});
+        }
+    });
+
+});
+
+router.get("/:id/clientprint", middlewareObj.redirectIfNotLoggedIn, function(req, res){
+    Order.findById(req.params.id).populate("drewnaKonstrukcyjne").populate("calowki").populate("drewnaKonstrukcyjne").populate("customer").exec(function(err, foundOrder){
+        if(err){
+            console.log(err);
+            res.redirect("/");
+        }
+        else{
+            res.render("orders/clientprint", {order: foundOrder});
+        }
+    });
+
+});
+
+router.get("/printroboczy/:id", function(req, res){
+
+    Order.findById(req.params.id).populate("drewnaKonstrukcyjne").populate("calowki").populate("drewnaKonstrukcyjne").populate("customer").exec(function(err, foundOrder){
+        if(err){
+            res.flash("error", "Coś nie wyszło");
+            res.redirect("/");
+        }
+        else{
+            pdfObject.createRoboczy(req.params.id, res, foundOrder);
         }
     });
 

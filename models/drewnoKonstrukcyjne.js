@@ -11,6 +11,7 @@ var drewnoKonstrukcyjneSchema = new mongoose.Schema({
     amount: Number,
     price: Number,
     value: Number,
+    hebelAmount: Number,
     painted: String,
     heblowane: String,
     description: String,

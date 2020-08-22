@@ -11,3 +11,4 @@ var PriceSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model("Price", PriceSchema);
+

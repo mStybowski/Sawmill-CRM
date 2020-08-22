@@ -70,7 +70,7 @@
                 </div>
 
                 <div class="formSection-bottom">
-                    <div class="chooseItem">
+                    <div class="chooseItem" onclick="updateInputs()">
                         <button type="button" id="drewnoKonstrukcyjne-button"><img src="/images/icons/nature.png" class="smallIcon">Drewno Konstrukcyjne</button>
                         <button type="button" id="calowka-button"><img src="/images/icons/calowka.png" class="smallIcon">Deska calówka</button>
                         <button type="button" id="lata-button"><img src="/images/icons/lata.png" class="smallIcon">Łata</button>
@@ -80,25 +80,25 @@
                     </div>
                 </div>
                 <div class="orderInfoDiv">
-                <input type="text" name="description">
+                <input name="description">
                     <label>Opis zamówienia</label>
 
-                    <input type="text" name="deadline">
+                    <input name="deadline">
                     <label>Termin wykonania</label>
                 </div>
                 <h3 class="smallHeader">Dane zamawiającego</h3>
                 <div class="orderInfoDiv">
 
-                    <input type="text" name="client[name]" >
+                    <input name="client[name]" >
                     <label>Imie</label>
 
-                    <input type="text" name="client[lastName]" >
+                    <input  name="client[lastName]" >
                     <label>Nazwisko</label>
 
-                    <input type="text" name="client[telephone]" >
+                    <input name="client[telephone]" >
                     <label>Numer telefonu</label>
 
-                    <input type="text" name="client[town]" >
+                    <input name="client[town]" >
                     <label>Miejscowość</label>
                     <input type="text" name="client[address]" >
                     <label>Adres</label>

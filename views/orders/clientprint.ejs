@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="/css/clientprint.css" rel="stylesheet" type="text/css">
+    <link href="/css/clientprint.css" rel="stylesheet" type="text/css">
+</head>
+<style>
+
+</style>
+<body>
+<div class="a4">
+
+
+    <div class="topBar">
+        <div class="left-header">
+            <span>Oferta</span>
+            <span>Sprzedażowa</span>
+        </div>
+        <div class="right-header">
+            <img style="width: 40%" src="/images/icons/oficjalneLogo.png">
+        </div>
+    </div>
+
+    <div id="informationBar">
+        <div id="CustomerName">
+            <img style="width: 10px" src="/images/icons/user.png">
+        </div>
+    </div>
+    <div id="Date">
+        dfgdffdsjhgj
+    </div>
+
+
+    <div class="contentPrint">
+        <%if(order.drewnaKonstrukcyjne.length){%>
+        <div class="itemTitle">
+            <span>Drewno Konstrukcyjne<span>
+        </div>
+        <table>
+            <%var cumulatedValue = 0;%>
+            <tr>
+                <th>Szerokość [m]</th><th>Wysokość [m]</th><th>Długość [m]</th><th>Ilość</th><th>Impregnacja</th><th>Heblowanie [strony]</th><th>Cena</th><th>Koszt</th>
+            </tr>
+            <%order.drewnaKonstrukcyjne.forEach(function(elmnt){
+            var hebelAmount = 0;
+            var paintedElement = "Nie";
+                if(elmnt.htop)
+                    hebelAmount+=1;
+
+                if(elmnt.hright)
+                    hebelAmount+=1;
+
+                if(elmnt.hbottom)
+                    hebelAmount+=1;
+
+                if(elmnt.hleft)
+                    hebelAmount+=1;
+
+                if(elmnt.painted)
+                    paintedElement = "Tak";
+                cumulatedValue+=elmnt.value
+                    %>
+
+
+                <tr>
+                    <td><%=elmnt.x%></td><td><%=elmnt.y%></td><td><%=elmnt.length%></td><td><%=elmnt.amount%></td><td><%=paintedElement%></td><td><%=hebelAmount%></td><td><%=elmnt.price%></td><td><%=elmnt.value%> zł</td>
+                </tr>
+
+            <%})%>
+
+        </table>
+        <div class="productSumValue">
+            <span>Razem: <%=cumulatedValue%> zł</span>
+        </div>
+            <div class="ItemDescription">
+                <%order.drewnaKonstrukcyjne.forEach(function(dk, it){%>
+                <%if(dk.description.length){%>
+                    <strong><%=it+1%>: </strong><%=dk.description%> <br>
+                <%}})%>
+            </div>
+    <%}%>
+            <%if(order.calowki.length){%>
+                <div class="itemTitle">
+                    <span>Calówki</span>
+                </div>
+                <table>
+                    <%var cumulatedValue = 0;%>
+                    <tr>
+                        <th>Objętość [m3] </th><th>Szerokość [m]</th><th>Długość [m]</th><th>Ilość</th><th>Impregnacja</th><th>Heblowanie [strony]</th><th>Cena</th><th>Koszt</th>
+                    </tr>
+                    <%order.calowki.forEach(function(elmnt){
+                        var hebelAmount = 0;
+                        var paintedElement = "Nie";
+                        if(elmnt.htop)
+                            hebelAmount+=1;
+
+
+
+                        if(elmnt.hbottom)
+                            hebelAmount+=1;
+
+
+
+                        if(elmnt.painted)
+                            paintedElement = "Tak";
+                        cumulatedValue+=elmnt.value
+                    %>
+
+
+                    <tr>
+                        <td><%=elmnt.v%></td><td><%=elmnt.x%></td><td><%=elmnt.length%></td><td><%=elmnt.amount%></td><td><%=paintedElement%></td><td><%=hebelAmount%></td><td><%=elmnt.price%></td><td><%=elmnt.value%>zł</td>
+                    </tr>
+
+                    <%})%>
+
+                </table>
+                <div class="productSumValue">
+                    <span><%=cumulatedValue%></span>
+                </div>
+                <div class="ItemDescription">
+                    <%=order.calowki[0].description%>
+                </div>
+            <%}%>
+            <%if(order.lata.value){%>
+            <div class="itemTitle">
+                <span>Łaty</span>
+            </div>
+            <table>
+                <%var cumulatedValue = 0;
+                var paintedElement = "Nie";
+                if(order.lata.painted)
+                    paintedElement = "Tak";
+                %>
+                <tr>
+                    <th>Metry bieżące [m] </th><th>Impregnacja</th><th>Cena</th><th>Koszt</th>
+                </tr>
+
+                <tr>
+                    <td><%=order.lata.metryBiezace%></td><td><%=paintedElement%></td><td><%=order.lata.price%></td><td><%=order.lata.value%></td>
+                </tr>
+
+
+            </table>
+            <div class="productSumValue">
+                <span><%=order.lata.value%></span>
+            </div>
+                <div class="ItemDescription">
+                    <%=order.lata.description%>
+                </div>
+            <%}%>
+            <%if(order.kontrlata.value){%>
+                <div class="itemTitle">
+                    <span>Kontrłaty</span>
+                </div>
+                <table>
+                    <%var cumulatedValue = 0;
+                        var paintedElement = "Nie";
+                        if(order.kontrlata.painted)
+                            paintedElement = "Tak";
+                    %>
+                    <tr>
+                        <th>Metry bieżące [m] </th><th>Impregnacja</th><th>Cena</th><th>Koszt</th>
+                    </tr>
+
+                    <tr>
+                        <td><%=order.kontrlata.metryBiezace%></td><td><%=paintedElement%></td><td><%=order.kontrlata.price%></td><td><%=order.kontrlata.value%></td>
+                    </tr>
+
+
+                </table>
+                <div class="productSumValue">
+                    <span><%=order.kontrlata.value%></span>
+                </div>
+                <div class="ItemDescription">
+                    <%=order.kontrlata.description%>
+                </div>
+            <%}%>
+            <%if(order.paczkaOpalu.value){%>
+                <div class="itemTitle">
+                    <span>Opał</span>
+                </div>
+                <table>
+                    <%var cumulatedValue = 0;
+
+                    %>
+                    <tr>
+                        <th>Ilość paczek [szt.] </th><th>Informacje</th><th>Cena</th><th>Koszt</th>
+                    </tr>
+
+                    <tr>
+                        <td><%=order.paczkaOpalu.amount%></td><td><%=order.paczkaOpalu.description%></td><td><%=order.paczkaOpalu.price%></td><td><%=order.paczkaOpalu.value%></td>
+                    </tr>
+
+
+                </table>
+                <div class="productSumValue">
+                    <span><%=order.paczkaOpalu.value%></span>
+                </div>
+
+            <%}%>
+            <%if(order.transport.value){%>
+            <div class="itemTitle">
+                <span>Transport</span>
+            </div>
+            <table>
+                <%var cumulatedValue = 0;
+
+                %>
+                <tr>
+                    <th>Kilometry</th><th>Informacje</th><th>Cena</th><th>Koszt</th>
+                </tr>
+
+                <tr>
+                    <td><%=order.transport.kilometers%></td><td><%=order.transport.description%></td><td><%=order.transport.price%></td><td><%=order.transport.value%></td>
+                </tr>
+
+
+            </table>
+            <div class="productSumValue">
+                <span><%=order.transport.value%></span>
+            </div>
+                <div class="ItemDescription">
+            <%=order.transport.description%>
+                </div>
+            <%}%>
+    </div>
+    <div class="OrderDescription">
+        <%=order.description%>
+    </div>
+    <div class="OrderValue">
+        <span>Do zapłaty: <%=order.value.toFixed(2)%> zł</span>
+    </div>
+</div>
+<script src="/js/print.js"></script>
+</body>
+</html>

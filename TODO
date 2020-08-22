@@ -33,17 +33,21 @@
 
 TODO:
 GOD TIER
-- Stworzenie strony zamówienia
-- Stworzenie strony klienta
+- Drukowanie dla trakowego
+- Drukowanie oferty dla klienta
+- Drukowanie do segregatora
 
 MEDIUM
 - Sprawdzenie poprawności formularzy przed wysłaniem
-- Dwa miejsca po przecinku w order cards w indexie
 
 COSMETICS
 - Zeby disabled przyciski sie nie podswietlaly
 
 ====================
+ ✓ Stworzenie strony klienta
+ ✓ trzy miejsca po przecinku w order cards w indexie
+ ✓ Zamiana przecinka na kropki
+ ✓ Stworzenie strony zamówienia
  ✓ Mozliwosc usuniecia klientow przy dalszym dzialaniu zamowien od nich
  ✓ usuwanie pozycji w formularzu
  ✓ Data do każdego zamówienia na kiedy realizacja

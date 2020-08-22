@@ -2,6 +2,13 @@ var i = 0;
 var allHebels = [];
 var isLata, isKontrlata, isOpal, isTransport;
 
+function updateInputs(){
+    var inputs = document.querySelectorAll("input[type='text']");
+    inputs.forEach(function(elemencik){
+        elemencik.setAttribute("oninput", `changeComaToDot(this)`);
+    })
+}
+
 var DrewnoPrice = document.getElementById("DrewnoPrice").value;
 var HebelPrice = document.getElementById("HebelPrice").value;
 var CalowkaPrice = document.getElementById("CalowkaPrice").value;
@@ -34,7 +41,10 @@ function enableElement(elmntID){
 function zmienionoValue(elmnt){
 
     elmntID = elmnt.getAttribute("counter");
+    var textWithComa = elmnt.value;
+    elmnt.value = textWithComa.replace(/,/g, '.');
     wartoscOstatecznaBrutto = Number(elmnt.value);
+
     updateNicePrice(elmntID, calculateNetto(wartoscOstatecznaBrutto), wartoscOstatecznaBrutto.toFixed(2));
 
 }
@@ -48,7 +58,6 @@ function usunPozycje(idToDelete, isSimple, idToSimple){
         enableElement(idToSimple);
     }
 }
-
 
 function calculateDrewnoKonstrukcyjnePrice(idToCount){
 
@@ -157,6 +166,7 @@ function handleHebel(elmnt){
 }
 
 function disableDimensions(elmnt){
+    changeComaToDot(elmnt);
     let idToCount = elmnt.getAttribute("counter");
     if(elmnt.value){
         document.getElementById(`[${idToCount}][x]`).disabled = true;
@@ -190,8 +200,13 @@ function createNewObject(template){
 
     i++;
 }
+function changeComaToDot(elmnt){
+    var textWithComa = elmnt.value;
+    elmnt.value = textWithComa.replace(/,/g, '.');
+}
 
 function disableVolume(elmnt){
+    changeComaToDot(elmnt);
     let idToCount = elmnt.getAttribute("counter");
     if(elmnt.value){
         document.getElementById(`[${idToCount}][v]`).disabled = true;
@@ -226,7 +241,7 @@ document.getElementById('drewnoKonstrukcyjne-button').onclick = function () {
             <div class="formItem-Properties-Text-Feature">
                 <div class="formItem-Properties-Text-Feature-InputDiv">
                     <div class="bi"></div>
-                    <input name="drewno[${i}][x]" id="[${i}][x]" class="featureInput">
+                    <input type="text" name="drewno[${i}][x]" id="[${i}][x]" class="featureInput" >
                     <div class="bi"></div>
                 </div>
                 <span>Szerokość</span>
@@ -235,7 +250,7 @@ document.getElementById('drewnoKonstrukcyjne-button').onclick = function () {
             <div class="formItem-Properties-Text-Feature">
                 <div class="formItem-Properties-Text-Feature-InputDiv">
                     <div class="bi"></div>
-                    <input name="drewno[${i}][y]" id="[${i}][y]" class="featureInput"> 
+                    <input type="text" name="drewno[${i}][y]" id="[${i}][y]" class="featureInput"> 
                     <div class="bi"></div>
                 </div>
                 <span>Wysokość</span>
@@ -244,7 +259,7 @@ document.getElementById('drewnoKonstrukcyjne-button').onclick = function () {
             <div class="formItem-Properties-Text-Feature">
                 <div class="formItem-Properties-Text-Feature-InputDiv">
                     <div class="bi"></div>
-                    <input name="drewno[${i}][length]" id="[${i}][length]" class="featureInput">
+                    <input type="text" name="drewno[${i}][length]" id="[${i}][length]" class="featureInput">
                     <div class="bi"></div>
                 </div>
                 <span>Długość</span>
@@ -253,7 +268,7 @@ document.getElementById('drewnoKonstrukcyjne-button').onclick = function () {
             <div class="formItem-Properties-Text-Feature">
                 <div class="formItem-Properties-Text-Feature-InputDiv">
                     <div class="bi"></div>
-                    <input name="drewno[${i}][amount]" id="[${i}][ilosc]" class="featureInput">
+                    <input type="text" name="drewno[${i}][amount]" id="[${i}][ilosc]" class="featureInput">
                     <div class="bi"></div>
                 </div>
             <span>Ilość</span>
@@ -273,7 +288,7 @@ document.getElementById('drewnoKonstrukcyjne-button').onclick = function () {
         <div class="formItem-Properties-Text-Feature">
                 <div class="formItem-Properties-Text-Feature-InputDiv">
                     <div class="bi"></div>
-                    <input name="drewno[${i}][price]" id="[${i}][cena]" class="featureInput" value=${DrewnoPrice}>
+                    <input type="text" name="drewno[${i}][price]" id="[${i}][cena]" class="featureInput" value=${DrewnoPrice}>
                     <div class="bi"></div>
                 </div>
             <span>zł/m<sup>3</sup></span>
@@ -373,7 +388,7 @@ document.getElementById('calowka-button').onclick = function () {
             <div class="formItem-Properties-Text-Feature">
                 <div class="formItem-Properties-Text-Feature-InputDiv">
                     <div class="bi"></div>
-                    <input name="calowka[${i}][x]" counter="${i}" id="[${i}][x]" oninput="disableVolume(this)" class="featureInput">
+                    <input  name="calowka[${i}][x]" counter="${i}" id="[${i}][x]" oninput="disableVolume(this)" class="featureInput">
                     <div class="bi"></div>
                 </div>
                 <span>Szerokość</span>
@@ -382,7 +397,7 @@ document.getElementById('calowka-button').onclick = function () {
             <div class="formItem-Properties-Text-Feature">
                 <div class="formItem-Properties-Text-Feature-InputDiv">
                     <div class="bi"></div>
-                    <input name="calowka[${i}][length]" counter="${i}" id="[${i}][length]" oninput="disableVolume(this)" class="featureInput">
+                    <input   name="calowka[${i}][length]" counter="${i}" id="[${i}][length]" oninput="disableVolume(this)" class="featureInput">
                     <div class="bi"></div>
                 </div>
                 <span>Długość</span>
@@ -412,7 +427,7 @@ document.getElementById('calowka-button').onclick = function () {
         <div class="formItem-Properties-Text-Feature">
                 <div class="formItem-Properties-Text-Feature-InputDiv">
                     <div class="bi"></div>
-                    <input name="calowka[${i}][price]" id="[${i}][cena]" class="featureInput" value=${CalowkaPrice} class="featureInput">
+                    <input  type="text"  name="calowka[${i}][price]" id="[${i}][cena]" class="featureInput" value=${CalowkaPrice} class="featureInput">
                     <div class="bi"></div>
                 </div>
             <span>zł/m<sup>3</sup></span>
@@ -504,7 +519,7 @@ document.getElementById('lata-button').onclick = function () {
             <div class="formItem-Properties-Text-Feature">
                 <div class="formItem-Properties-Text-Feature-InputDiv">
                     <div class="bi"></div>
-                    <input name="lata[metryBiezace]" id="[${i}][x]" oninput="calculatePrice(${i})" class="featureInput" >
+                    <input  type="text"  name="lata[metryBiezace]" id="[${i}][x]" oninput="calculatePrice(${i})" class="featureInput" >
                     <div class="bi"></div>
                 </div>
                 <span>Metry Bieżące</span>
@@ -531,7 +546,7 @@ document.getElementById('lata-button').onclick = function () {
         <div class="formItem-Properties-Text-Feature">
                 <div class="formItem-Properties-Text-Feature-InputDiv">
                     <div class="bi"></div>
-                    <input name="lata[price]" id="[${i}][cena]" oninput="calculatePrice(${i})"  value=${LataPrice} class="featureInput" >
+                    <input  type="text"  name="lata[price]" id="[${i}][cena]" oninput="calculatePrice(${i})"  value=${LataPrice} class="featureInput" >
                     <div class="bi"></div>
                 </div>
             <span>zł/m<sup>3</sup></span>
@@ -546,7 +561,7 @@ document.getElementById('lata-button').onclick = function () {
                                 <div class="bi"></div>
                                 <div class="bi"></div>
                             </div>
-                        <input name="lata[value]" id="Wartosc[${i}]" counter="${i}" oninput="zmienionoValue(this)" class="featureInput finalFeatureInput">
+                        <input   name="lata[value]" id="Wartosc[${i}]" counter="${i}" oninput="zmienionoValue(this)" class="featureInput finalFeatureInput">
                             <div class="di">
                                 <div class="bi"></div>
                                 <div class="bi"></div>
@@ -585,7 +600,7 @@ document.getElementById('kontrlata-button').onclick = function () {
             <div class="formItem-Properties-Text-Feature">
                 <div class="formItem-Properties-Text-Feature-InputDiv">
                     <div class="bi"></div>
-                    <input name="kontrlata[metryBiezace]" oninput="calculatePrice(${i})" id="[${i}][x]" class="featureInput">
+                    <input  type="text" name="kontrlata[metryBiezace]" oninput="calculatePrice(${i})" id="[${i}][x]" class="featureInput">
                     <div class="bi"></div>
                 </div>
                 <span>Metry Bieżące</span>
@@ -612,7 +627,7 @@ document.getElementById('kontrlata-button').onclick = function () {
         <div class="formItem-Properties-Text-Feature">
                 <div class="formItem-Properties-Text-Feature-InputDiv">
                     <div class="bi"></div>
-                    <input name="kontrlata[price]" id="[${i}][cena]" oninput="calculatePrice(${i})" value=${KontrlataPrice} class="featureInput"> 
+                    <input  type="text" name="kontrlata[price]" id="[${i}][cena]" oninput="calculatePrice(${i})" value=${KontrlataPrice} class="featureInput"> 
 
                     <div class="bi"></div>
                 </div>
@@ -629,7 +644,7 @@ document.getElementById('kontrlata-button').onclick = function () {
                                 <div class="bi"></div>
                                 <div class="bi"></div>
                             </div>
-                            <input name="kontrlata[value]" id="Wartosc[${i}]" counter="${i}" oninput="zmienionoValue(this)" class="featureInput finalFeatureInput">
+                            <input   name="kontrlata[value]" id="Wartosc[${i}]" counter="${i}" oninput="zmienionoValue(this)" class="featureInput finalFeatureInput">
 
                             <div class="di">
                                 <div class="bi"></div>
@@ -668,7 +683,7 @@ document.getElementById('opal-button').onclick = function () {
             <div class="formItem-Properties-Text-Feature">
                 <div class="formItem-Properties-Text-Feature-InputDiv">
                     <div class="bi"></div>
-                    <input name="opal[amount]" id="[${i}][x]" oninput="calculatePrice(${i})" class="featureInput">
+                    <input  type="text" name="opal[amount]" id="[${i}][x]" oninput="calculatePrice(${i})" class="featureInput">
                     <div class="bi"></div>
                 </div>
                 <span>Ilość</span>
@@ -695,7 +710,7 @@ document.getElementById('opal-button').onclick = function () {
         <div class="formItem-Properties-Text-Feature">
                 <div class="formItem-Properties-Text-Feature-InputDiv">
                     <div class="bi"></div>
-                    <input name="opal[price]" id="[${i}][cena]" oninput="calculatePrice(${i})" value=${OpalPrice} class="featureInput">
+                    <input  type="text" name="opal[price]" id="[${i}][cena]" oninput="calculatePrice(${i})" value=${OpalPrice} class="featureInput">
                     <div class="bi"></div>
                 </div>
             <span>zł/m<sup>3</sup></span>
@@ -710,7 +725,7 @@ document.getElementById('opal-button').onclick = function () {
                                 <div class="bi"></div>
                                 <div class="bi"></div>
                             </div>
-                            <input name="opal[value]" id="Wartosc[${i}]" counter="${i}" oninput="zmienionoValue(this)" class="featureInput finalFeatureInput">
+                            <input   name="opal[value]" id="Wartosc[${i}]" counter="${i}" oninput="zmienionoValue(this)" class="featureInput finalFeatureInput">
 
                             <div class="di">
                                 <div class="bi"></div>
@@ -753,7 +768,7 @@ document.getElementById('transport-button').onclick = function () {
             <div class="formItem-Properties-Text-Feature">
                 <div class="formItem-Properties-Text-Feature-InputDiv">
                     <div class="bi"></div>
-                    <input name="transport[kilometers]" id="[${i}][x]" counter="${i}" oninput="calculatePrice(${i})" class="featureInput">
+                    <input  type="text" name="transport[kilometers]" id="[${i}][x]" counter="${i}" oninput="calculatePrice(${i})" class="featureInput">
                     <div class="bi"></div>
                 </div>
                 <span>Kilometry</span>
@@ -780,7 +795,7 @@ document.getElementById('transport-button').onclick = function () {
         <div class="formItem-Properties-Text-Feature">
                 <div class="formItem-Properties-Text-Feature-InputDiv">
                     <div class="bi"></div>
-                    <input name="transport[price]" id="[${i}][cena]" counter="${i}" oninput="calculatePrice(${i})" value=${TransportPrice} class="featureInput">
+                    <input  type="text" name="transport[price]" id="[${i}][cena]" counter="${i}" oninput="calculatePrice(${i})" value=${TransportPrice} class="featureInput">
                     <div class="bi"></div>
                 </div>
             <span>zł/m<sup>3</sup></span>
@@ -795,7 +810,7 @@ document.getElementById('transport-button').onclick = function () {
                                 <div class="bi"></div>
                                 <div class="bi"></div>
                             </div>
-                            <input name="transport[value]" id="Wartosc[${i}]" counter="${i}"  oninput="zmienionoValue(this)" class="featureInput finalFeatureInput">
+                            <input  name="transport[value]" id="Wartosc[${i}]" counter="${i}"  oninput="zmienionoValue(this)" class="featureInput finalFeatureInput">
 
                             <div class="di">
                                 <div class="bi"></div>

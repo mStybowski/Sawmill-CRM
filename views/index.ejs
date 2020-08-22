@@ -58,26 +58,12 @@
                                     </div>
                                     <div class="orderThumbnail-Content-Item-Attributes">
                                         <div class="orderThumbnail-Content-Item-Attributes">
-                                            <div class="orderThumbnail-Content-Item-Attributes-feature">
-                                                <img src="/images/icons/volume.png" class="orderThumbnailAttributeIcon">
-                                                <span>Objętość: <%=elmnt.v%> m<sup>3</sup></span>
-                                            </div>
+
                                             <div class="orderThumbnail-Content-Item-Attributes-feature">
                                                 <img src="/images/icons/lift.png" class="orderThumbnailAttributeIcon">
                                                 <span>Ilość: <%=elmnt.amount%> szt.</span>
                                             </div>
-                                            <%if(elmnt.painted){%>
-                                            <div class="orderThumbnail-Content-Item-Attributes-feature">
-                                                <img src="/images/icons/paint.png" class="orderThumbnailAttributeIcon">
-                                                <span>Impregnacja: Tak</span>
-                                            </div>
-                                            <%}%>
-                                            <%if(elmnt.heblowane){%>
-                                                <div class="orderThumbnail-Content-Item-Attributes-feature">
-                                                    <img src="/images/icons/heblowanie.png" class="orderThumbnailAttributeIcon">
-                                                    <span>Heblowanie: Tak</span>
-                                                </div>
-                                            <%}%>
+
                                         </div>
                                     </div>
                                 </div>
@@ -101,14 +87,18 @@
                                     </div>
                                     <div class="orderThumbnail-Content-Item-Attributes">
                                         <div class="orderThumbnail-Content-Item-Attributes">
+                                            <%if(elmnt.v){%>
                                             <div class="orderThumbnail-Content-Item-Attributes-feature">
                                                 <img src="/images/icons/volume.png" class="orderThumbnailAttributeIcon">
                                                 <span>Objętość: <%=elmnt.v%> m<sup>3</sup></span>
                                             </div>
+                                            <%}%>
+                                            <%if(elmnt.amount){%>
                                             <div class="orderThumbnail-Content-Item-Attributes-feature">
                                                 <img src="/images/icons/lift.png" class="orderThumbnailAttributeIcon">
                                                 <span><span>Ilość: <%=elmnt.amount%> szt.</span></span>
                                             </div>
+                                            <%}%>
                                             <%if(elmnt.painted){%>
                                                 <div class="orderThumbnail-Content-Item-Attributes-feature">
                                                     <img src="/images/icons/paint.png" class="orderThumbnailAttributeIcon">
@@ -178,7 +168,7 @@
                                         <div class="orderThumbnail-Content-Item-Attributes">
                                             <div class="orderThumbnail-Content-Item-Attributes-feature">
                                                 <img src="/images/icons/length.png" class="orderThumbnailAttributeIcon" id="tooSmallIcon">
-                                                <span>Metry bieżące: <%=order.kontrlata.metryBiezace.toFixed(2)%></span>
+                                                <span>Metry bieżące: <%=order.kontrlata.metryBiezace.toFixed(2)%> </span>
                                             </div>
 
                                             <%if(order.kontrlata.painted){%>
@@ -268,7 +258,7 @@
                     </div>
 
                     <div class="deadlineBar">
-                        <span><%=order.deadline%></span>
+                        <span>Termin: <%=order.deadline%></span>
                     </div>
                 </div>
 

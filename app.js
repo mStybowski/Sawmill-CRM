@@ -8,7 +8,6 @@ var express     = require("express"),
     Price           = require("./models/price"),
     Client          =require("./models/client");
 
-
 const url = 'mongodb://127.0.0.1:27017/tartak';
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
@@ -37,6 +36,7 @@ app.use(require("express-session")({
     resave: false,
     saveUninitialized: false
 }));
+
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
@@ -55,30 +55,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-var fonts = {
-    Roboto: {
-        normal: 'fonts/Roboto-Regular.ttf',
-        bold: 'fonts/Roboto-Medium.ttf',
-        italics: 'fonts/Roboto-Italic.ttf',
-        bolditalics: 'fonts/Roboto-MediumItalic.ttf'
-    }
-};
 
-var PdfPrinter = require('pdfmake');
-var printer = new PdfPrinter(fonts);
-var fs = require('fs');
-
-var docDefinition = {
-    content:["elo"]
-};
-
-var options = {
-    // ...
-}
-
-var pdfDoc = printer.createPdfKitDocument(docDefinition, options);
-pdfDoc.pipe(fs.createWriteStream('document.pdf'));
-pdfDoc.end();
 
 app.use("/", indexRoutes);
 app.use("/orders", ordersRoutes);

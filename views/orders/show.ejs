@@ -1,5 +1,13 @@
 <%- include("../partials/header.ejs")%>
 <div class="order">
+
+    <form method="get" action="/orders/<%=order._id%>/clientprint">
+        <button >Wydrukuj dla trakowego</button>
+    </form>
+    <form method="get" action="/orders/printroboczy/<%=order._id%>">
+        <button >Wydrukuj dla trakowego</button>
+    </form>
+
     <div class="order-Header dfCsbac">
         <div class="order-Header-date">
             <span><i><%= order.created.toDateString()%> </i></span>
@@ -36,9 +44,9 @@
             <img class="orderIcon" src="/images/icons/commerce.png">
             <div class="orderTopbar-TitleAndDeadline dfCsb">
                 <div class="orderTitle">
-                    Zamówienie nr 54
+                    Zamówienie
                 </div>
-                <div class="orderDeadline">
+                <div class="orderDeadline">Termin:
                     <%=order.deadline%>
                 </div>
             </div>
@@ -82,7 +90,7 @@
                     <div class="orderThumbnail-Content-Item-Attributes">
                         <div class="orderThumbnail-Content-Item-Attributes-feature">
                             <img src="/images/icons/cube.png" class="orderThumbnailAttributeIcon">
-                            <span>Wymiary:  <%=elmnt.x%> x <%=elmnt.y%> x <%=elmnt.length%></span>
+                            <span>Wymiary:  <%=elmnt.x.toFixed(2)%> x <%=elmnt.y.toFixed(2)%> x <%=elmnt.length.toFixed(2)%> [m]</span>
                         </div>
                         <div class="orderThumbnail-Content-Item-Attributes-feature">
                             <img src="/images/icons/lift.png" class="orderThumbnailAttributeIcon">
@@ -148,14 +156,17 @@
         <div class="order-item-properties dfRfsac">
             <div class="item-properties">
                 <div class="orderThumbnail-Content-Item-Attributes">
+                    <%if(elmnt.v){%>
                     <div class="orderThumbnail-Content-Item-Attributes-feature">
                         <img src="/images/icons/volume.png" class="orderThumbnailAttributeIcon">
-                        <span>Objętość: <%=elmnt.v%> m<sup>3</sup></span>
+                        <span>Objętość: <%=elmnt.v%> [m<sup>3</sup>]</span>
                     </div>
+                    <%}%>
+
                     <%if(elmnt.x){%>
                     <div class="orderThumbnail-Content-Item-Attributes-feature">
                         <img src="/images/icons/cube.png" class="orderThumbnailAttributeIcon">
-                        <span>Wymiary: <%=elmnt.x%> x <%=elmnt.length%></span>
+                        <span>Wymiary: <%=elmnt.x.toFixed(2)%> x <%=elmnt.length.toFixed(2)%> [m]</span>
                     </div>
                     <%}%>
                     <div class="orderThumbnail-Content-Item-Attributes-feature">
