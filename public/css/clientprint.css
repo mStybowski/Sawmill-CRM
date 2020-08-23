@@ -5,7 +5,6 @@
 body{
     background-color: #eeeeee;
     font-family: 'Rajdhani', sans-serif;
-
 }
 footer{
     align-self: flex-end;
@@ -14,60 +13,71 @@ footer{
     border-top: 1px solid grey;
 }
 .a4{
-    max-width: 210mm;
-    max-height: 297mm;
+    width: 210mm;
+    min-height: 291mm;
     box-shadow: 10px 10px 5px 0 rgba(0,0,0,0.06);
     margin:auto;
     background-color: white;
-
+    padding-top: 20px;
 }
 #Date{
 
 }
 .topBar{
     width: 100%;
-    height: 25mm;
     display: flex;
     flex-direction: row;
-    margin-top: 20px;
-    color: #eeeeee;
+    justify-content: space-between;
+
 }
-.left-header{
+#left-header{
     font-weight: 600;
     display: flex;
     justify-content: center;
-    align-items: center;
-    background-color: #3d3d3d;
-    display: flex;
     flex-direction:column;
-    align-items: flex-start;
-    padding-left: 64px;
-    font-size:  25px;
+    flex-basis: 50%;
 }
-.left-header :first-child{
-    font-size: 35px;
-    letter-spacing: 2px;
-}
-.left-header span{
-    line-height: 28px;
-}
-.right-header{
-
+#left-header-top{
+    background-color: #303031;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding-right: 60px;
-    background-color: #3d3d3d;
+}
+#left-header-top img{
+    width: 60%;
+    padding-right: 13px;
+}
+#left-header-bottom{
+    text-align: right;
+    text-transform: uppercase;
+    padding: 3px 27px;
+    font-weight: 700;
+    letter-spacing: 0.3mm;
+    color: #3d3d3d;
+    font-size: 18px;
+}
 
+.right-header{
+    background-color: #efefef;
+    font-size: 13px;
+    letter-spacing: 0.2mm;
+    font-weight: 500;
+    flex-basis: 50%;
+    text-align: right;
+    padding: 2px 12mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .itemTitle{
     padding: 5px 0;
-
 }
 .itemTitle span{
-    font-size: 23px;
-    font-weight: bold;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.2mm;
     color: #3d3d3d;
+    padding-left: 10mm;
 }
 footer{
     display: flex;
@@ -78,7 +88,7 @@ footer{
 table{
     text-align: center;
     width: 100%;
-    font-size: 14px;
+    font-size: 12.5px;
 }
 table th{
     background-color: #dddddd;
@@ -89,7 +99,7 @@ table td{
     padding: 1px 0;
 }
 .contentPrint{
-    margin-top:38mm;
+    padding: 9px 7mm;
 }
 .productSumValue{
     background-color: #d2d2d2;
