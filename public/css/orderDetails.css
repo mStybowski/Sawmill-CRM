@@ -151,3 +151,21 @@
 .Order-hebel{
 margin: 0 40px;
 }
+
+.nettoBruttoActive{
+    background-color: #e7e7e7;
+
+}
+.nettoBruttoActive:hover{
+    background-color: #343434;
+    color: white;
+}
+#printBar{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+#printBar form{
+    align-items: stretch;
+    padding: 0 20px;
+}

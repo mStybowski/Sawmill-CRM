@@ -33,10 +33,6 @@
         </div>
     </div>
 
-    <div id="Date">
-
-    </div>
-
 
     <div class="contentPrint">
         <%if(order.drewnaKonstrukcyjne.length){%>
@@ -46,7 +42,7 @@
         <table>
             <%var cumulatedValue = 0;%>
             <tr>
-                <th>Szerokość [m]</th><th>Wysokość [m]</th><th>Długość [m]</th><th>Ilość</th><th>Impregnacja</th><th>Heblowanie [strony]</th><th>Cena</th><th>Koszt</th>
+                <th>Szerokość [m]</th><th>Wysokość [m]</th><th>Długość [m]</th><th>Ilość [szt.]</th><th>Impregnacja</th><th>Heblowanie [strony]</th><th>Cena/m<sup>3</sup></th><th>Koszt</th>
             </tr>
             <%order.drewnaKonstrukcyjne.forEach(function(elmnt){
             var hebelAmount = 0;
@@ -70,21 +66,17 @@
 
 
                 <tr>
-                    <td><%=elmnt.x%></td><td><%=elmnt.y%></td><td><%=elmnt.length%></td><td><%=elmnt.amount%></td><td><%=paintedElement%></td><td><%=hebelAmount%></td><td><%=elmnt.price%></td><td><%=elmnt.value%> zł</td>
+                    <td><%=elmnt.x%></td><td><%=elmnt.y%></td><td><%=elmnt.length%></td><td><%=elmnt.amount%></td><td><%=paintedElement%></td><td><%=hebelAmount%></td><td class="nettoToBrutto"><%=elmnt.price%> zł</td><td><%=elmnt.value%> zł</td>
                 </tr>
 
             <%})%>
 
         </table>
         <div class="productSumValue">
-            <span>Razem: <%=cumulatedValue%> zł</span>
+            Suma: <span><%=cumulatedValue%> zł </span>
         </div>
-            <div class="ItemDescription">
-                <%order.drewnaKonstrukcyjne.forEach(function(dk, it){%>
-                <%if(dk.description.length){%>
-                    <strong><%=it+1%>: </strong><%=dk.description%> <br>
-                <%}})%>
-            </div>
+
+
     <%}%>
             <%if(order.calowki.length){%>
                 <div class="itemTitle">
@@ -93,7 +85,7 @@
                 <table>
                     <%var cumulatedValue = 0;%>
                     <tr>
-                        <th>Objętość [m3] </th><th>Szerokość [m]</th><th>Długość [m]</th><th>Ilość</th><th>Impregnacja</th><th>Heblowanie [strony]</th><th>Cena</th><th>Koszt</th>
+                        <th>Objętość [m3] </th><th>Szerokość [m]</th><th>Długość [m]</th><th>Ilość [szt.]</th><th>Impregnacja</th><th>Heblowanie [strony]</th><th>Cena/m<sup>3</sup></th><th>Koszt</th>
                     </tr>
                     <%order.calowki.forEach(function(elmnt){
                         var hebelAmount = 0;
@@ -115,18 +107,16 @@
 
 
                     <tr>
-                        <td><%=elmnt.v%></td><td><%=elmnt.x%></td><td><%=elmnt.length%></td><td><%=elmnt.amount%></td><td><%=paintedElement%></td><td><%=hebelAmount%></td><td><%=elmnt.price%></td><td><%=elmnt.value%>zł</td>
+                        <td><%=elmnt.v%></td><td><%=elmnt.x%></td><td><%=elmnt.length%></td><td><%=elmnt.amount%></td><td><%=paintedElement%></td><td><%=hebelAmount%></td><td class="nettoToBrutto"><%=elmnt.price%> zł</td><td><%=elmnt.value%> zł</td>
                     </tr>
 
                     <%})%>
 
                 </table>
                 <div class="productSumValue">
-                    <span><%=cumulatedValue%></span>
+                    Suma: <span><%=cumulatedValue%> zł</span>
                 </div>
-                <div class="ItemDescription">
-                    <%=order.calowki[0].description%>
-                </div>
+
             <%}%>
             <%if(order.lata.value){%>
             <div class="itemTitle">
@@ -139,21 +129,19 @@
                     paintedElement = "Tak";
                 %>
                 <tr>
-                    <th>Metry bieżące [m] </th><th>Impregnacja</th><th>Cena</th><th>Koszt</th>
+                    <th>Metry bieżące [m] </th><th>Impregnacja</th><th>Cena/m.b.</th><th>Koszt</th>
                 </tr>
 
                 <tr>
-                    <td><%=order.lata.metryBiezace%></td><td><%=paintedElement%></td><td><%=order.lata.price%></td><td><%=order.lata.value%></td>
+                    <td><%=order.lata.metryBiezace%></td><td><%=paintedElement%></td><td class="nettoToBrutto"><%=order.lata.price%> zł</td><td><%=order.lata.value%> zł</td>
                 </tr>
 
 
             </table>
             <div class="productSumValue">
-                <span><%=order.lata.value%></span>
+                Suma: <span><%=order.lata.value%> zł</span>
             </div>
-                <div class="ItemDescription">
-                    <%=order.lata.description%>
-                </div>
+
             <%}%>
             <%if(order.kontrlata.value){%>
                 <div class="itemTitle">
@@ -166,21 +154,19 @@
                             paintedElement = "Tak";
                     %>
                     <tr>
-                        <th>Metry bieżące [m] </th><th>Impregnacja</th><th>Cena</th><th>Koszt</th>
+                        <th>Metry bieżące [m] </th><th>Impregnacja</th><th>Cena/m.b.</th><th>Koszt</th>
                     </tr>
 
                     <tr>
-                        <td><%=order.kontrlata.metryBiezace%></td><td><%=paintedElement%></td><td><%=order.kontrlata.price%></td><td><%=order.kontrlata.value%></td>
+                        <td><%=order.kontrlata.metryBiezace%></td><td><%=paintedElement%></td><td class="nettoToBrutto"><%=order.kontrlata.price%> zł</td><td><%=order.kontrlata.value%> zł</td>
                     </tr>
 
 
                 </table>
                 <div class="productSumValue">
-                    <span><%=order.kontrlata.value%></span>
+                    Suma: <span><%=order.kontrlata.value%> zł</span>
                 </div>
-                <div class="ItemDescription">
-                    <%=order.kontrlata.description%>
-                </div>
+
             <%}%>
             <%if(order.paczkaOpalu.value){%>
                 <div class="itemTitle">
@@ -191,17 +177,17 @@
 
                     %>
                     <tr>
-                        <th>Ilość paczek [szt.] </th><th>Informacje</th><th>Cena</th><th>Koszt</th>
+                        <th>Ilość paczek [szt.] </th><th>Informacje</th><th>Cena/paczkę</th><th>Koszt</th>
                     </tr>
 
                     <tr>
-                        <td><%=order.paczkaOpalu.amount%></td><td><%=order.paczkaOpalu.description%></td><td><%=order.paczkaOpalu.price%></td><td><%=order.paczkaOpalu.value%></td>
+                        <td><%=order.paczkaOpalu.amount%></td><td><%=order.paczkaOpalu.description%></td><td class="nettoToBrutto"><%=order.paczkaOpalu.price%> zł</td><td><%=order.paczkaOpalu.value%> zł</td>
                     </tr>
 
 
                 </table>
                 <div class="productSumValue">
-                    <span><%=order.paczkaOpalu.value%></span>
+                    Suma: <span><%=order.paczkaOpalu.value%> zł</span>
                 </div>
 
             <%}%>
@@ -214,27 +200,25 @@
 
                 %>
                 <tr>
-                    <th>Kilometry</th><th>Informacje</th><th>Cena</th><th>Koszt</th>
+                    <th>Kilometry</th><th>Informacje</th><th>Cena/km.</th><th>Koszt</th>
                 </tr>
 
                 <tr>
-                    <td><%=order.transport.kilometers%></td><td><%=order.transport.description%></td><td><%=order.transport.price%></td><td><%=order.transport.value%></td>
+                    <td><%=order.transport.kilometers%></td><td><%=order.transport.description%></td><td class="nettoToBrutto"><%=order.transport.price%> zł</td><td><%=order.transport.value%> zł</td>
                 </tr>
 
 
             </table>
             <div class="productSumValue">
-                <span><%=order.transport.value%></span>
+                Suma: <span><%=order.transport.value%> zł</span>
             </div>
-                <div class="ItemDescription">
-            <%=order.transport.description%>
-                </div>
+
             <%}%>
             <div class="OrderDescription">
                 <%=order.description%>
             </div>
             <div class="OrderValue">
-                <span>Do zapłaty: <%=order.value.toFixed(2)%> zł</span>
+                Do zapłaty: <span><%=order.value.toFixed(2)%> zł</span>
             </div>
     </div>
 

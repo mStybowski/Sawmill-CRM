@@ -51,8 +51,8 @@
                                             </span>
                                         </div>
                                         <div class="orderThumbnail-Content-Item-Header-Value">
-                                            <span class="orderThumbnailItemValue">
-                                                <%= elmnt.value.toFixed(2) %> PLN
+                                            <span class="nettoBruttoActive orderThumbnailItemValue">
+                                                <%= elmnt.value.toFixed(2) %> zł
                                             </span>
                                         </div>
                                     </div>
@@ -79,8 +79,8 @@
                                             </span>
                                         </div>
                                         <div class="orderThumbnail-Content-Item-Header-Value">
-                                            <span class="orderThumbnailItemValue">
-                                                <%= elmnt.value.toFixed(2) %> PLN
+                                            <span class="nettoBruttoActive orderThumbnailItemValue">
+                                                <%= elmnt.value.toFixed(2) %> zł
                                             </span>
 
                                         </div>
@@ -125,8 +125,8 @@
                                             </span>
                                         </div>
                                         <div class="orderThumbnail-Content-Item-Header-Value">
-                                            <span class="orderThumbnailItemValue">
-                                                <%= order.lata.value.toFixed(2) %> PLN
+                                            <span class="nettoBruttoActive orderThumbnailItemValue">
+                                                <%= order.lata.value.toFixed(2) %> zł
                                             </span>
 
                                         </div>
@@ -158,8 +158,8 @@
                                             </span>
                                         </div>
                                         <div class="orderThumbnail-Content-Item-Header-Value">
-                                            <span class="orderThumbnailItemValue">
-                                                <%= order.kontrlata.value.toFixed(2) %> PLN
+                                            <span class="nettoBruttoActive orderThumbnailItemValue">
+                                                <%= order.kontrlata.value.toFixed(2) %> zł
                                             </span>
 
                                         </div>
@@ -191,8 +191,8 @@
                                             </span>
                                         </div>
                                         <div class="orderThumbnail-Content-Item-Header-Value">
-                                            <span class="orderThumbnailItemValue">
-                                                <%= order.paczkaOpalu.value.toFixed(2) %> PLN
+                                            <span class="nettoBruttoActive orderThumbnailItemValue">
+                                                <%= order.paczkaOpalu.value.toFixed(2) %> zł
                                             </span>
 
                                         </div>
@@ -222,8 +222,8 @@
                                             </span>
                                         </div>
                                         <div class="orderThumbnail-Content-Item-Header-Value">
-                                            <span class="orderThumbnailItemValue">
-                                                <%= order.transport.value.toFixed(2) %> PLN
+                                            <span class="nettoBruttoActive orderThumbnailItemValue">
+                                                <%= order.transport.value.toFixed(2) %> zł
                                             </span>
 
                                         </div>
@@ -247,8 +247,8 @@
                             <span><%=order.description%></span>
                         </div>
                         <div class="orderThumbnail-Footer-ValueAndMore">
-                            <div class="orderThumbnail-Footer-ValueAndMore-Value">
-                                <span class="orderThumbnailValueSpan"><%=order.value.toFixed(2)%> PLN</span>
+                            <div class="nettoBruttoActive orderThumbnail-Footer-ValueAndMore-Value">
+                                <%=order.value.toFixed(2)%> zł
                             </div>
                             <div class="orderThumbnail-Footer-ValueAndMore-More">
                                 <a href="/orders/<%=order._id%>">Szczegóły</a>
@@ -267,5 +267,5 @@
         </div>
 
 </div>
-
+<script src="js/nettoBrutto.js"></script>
 <%- include("./partials/footer.ejs")%>

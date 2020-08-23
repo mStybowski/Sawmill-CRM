@@ -1,3 +1,11 @@
+var nettoBruttoInputs = document.querySelectorAll(".nettoToBrutto");
+
+nettoBruttoInputs.forEach(function(elemencik){
+    var netto = Number(elemencik.innerText.substring(0, elemencik.innerText.indexOf(' ')+1));
+    elemencik.innerText = calculateBrutto(netto) + " zł";
+})
+
+
 function getCurrentDate(){
     var d = new Date();
     return d.getDate();
@@ -25,11 +33,12 @@ function returnDate(){
 }
 
 function calculateBrutto(netto){
-    return (netto + netto*0.23).toFixed(2);
+    return String((netto + netto*0.23).toFixed(2));
 }
 
 function calculateNetto(brutto){
-    return (brutto/1.23).toFixed(2);
+    return String((brutto/1.23).toFixed(2));
 }
 
 document.getElementById("Date").innerHTML = returnDate();
+

@@ -20,10 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24751351-93bd-4288-aa29-ea210e08a968" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/js/nettoBrutto.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/clientprint.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/clientprint.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/orderDetails.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/orderDetails.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/print.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/print.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/orders/clientprint.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/orders/clientprint.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/orders/new.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/orders/new.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/orders/show.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/orders/show.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,13 +69,13 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\mstyb\Desktop\Projects\Tartak\views\orders" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\mstyb\Desktop\Projects\Tartak\views\orders" />
       <recent name="C:\Users\mstyb\Desktop\Projects\Tartak\views" />
       <recent name="C:\Users\mstyb\Desktop\Projects\Tartak" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mstyb\Desktop\Projects\Tartak\views\orders" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -163,6 +168,7 @@
       <workItem from="1598096401897" duration="3989000" />
       <workItem from="1598110046192" duration="8000" />
       <workItem from="1598175060531" duration="4983000" />
+      <workItem from="1598190957440" duration="9667000" />
     </task>
     <servers />
   </component>
@@ -182,14 +188,22 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="706" y="323" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588842869127">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1515" height="189" key="GridCell.Tab.0.bottom" timestamp="1598199281281">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="706" y="323" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1588842869127" />
-    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589385873950">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1515" height="189" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598199281281" />
+    <state width="1515" height="189" key="GridCell.Tab.0.center" timestamp="1598199281279">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589385873950" />
+    <state width="1515" height="189" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1598199281279" />
+    <state width="1515" height="189" key="GridCell.Tab.0.left" timestamp="1598199281278">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="189" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1598199281278" />
+    <state width="1515" height="189" key="GridCell.Tab.0.right" timestamp="1598199281280">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="189" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1598199281280" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1590074827962">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

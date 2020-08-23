@@ -1,13 +1,13 @@
 <%- include("../partials/header.ejs")%>
 <div class="order">
-
+    <div id="printBar">
     <form method="get" action="/orders/<%=order._id%>/clientprint">
-        <button >Wydrukuj dla trakowego</button>
+        <button style="display: flex; align-items: center; justify-content: center; padding: 3px 0; cursor: pointer"><img src="/images/icons/printer.png" class="orderThumbnailAttributeIcon">Wydrukuj dla Klienta</button>
     </form>
     <form method="get" action="/orders/printroboczy/<%=order._id%>">
-        <button >Wydrukuj dla trakowego</button>
+        <button style="display: flex; align-items: center; justify-content: center; padding: 3px 0; cursor: pointer"><img src="/images/icons/printer.png" class="orderThumbnailAttributeIcon">Wydrukuj dla Jurka</button>
     </form>
-
+    </div>
     <div class="order-Header dfCsbac">
         <div class="order-Header-date">
             <span><i><%= order.created.toDateString()%> </i></span>
@@ -67,8 +67,9 @@
                     </div>
                 <%}%>
             <div class="buttonPlaceholder">
-                <div class="orderValue"><%=order.value.toFixed(2)%> zł</div>
+                <div class="nettoBruttoActive orderValue"><%=order.value.toFixed(2)%> zł</div>
             </div>
+
         </div>
     </div>
     <div class="orderDescription">
@@ -81,9 +82,10 @@
                     <img src="/images/icons/nature.png" class="orderThumbnailItemIcon">
                     <span class="order-itemTitle">Drewno Konstrukcyjne</span>
                 </div>
-                <div class="order-item-header-value">
-                    <%=elmnt.value.toFixed(2)%>
+                <div class="nettoBruttoActive order-item-header-value">
+                    <%=elmnt.value.toFixed(2)%> zł
                 </div>
+
             </div>
             <div class="order-item-properties dfRfsac">
                 <div class="item-properties">
@@ -149,8 +151,8 @@
                 <img src="/images/icons/calowka.png" class="orderThumbnailItemIcon">
                 <span class="order-itemTitle">Deska calówka</span>
             </div>
-            <div class="order-item-header-value">
-                <%=elmnt.value.toFixed(2)%>
+            <div class="nettoBruttoActive order-item-header-value">
+                <%=elmnt.value.toFixed(2)%> zł
             </div>
         </div>
         <div class="order-item-properties dfRfsac">
@@ -226,8 +228,8 @@
                 <img src="/images/icons/lata.png" class="orderThumbnailItemIcon">
                     <span class="order-itemTitle">Łata</span>
             </div>
-            <div class="order-item-header-value">
-                <%=order.lata.value.toFixed(2)%>
+            <div class="nettoBruttoActive order-item-header-value">
+                <%=order.lata.value.toFixed(2)%> zł
             </div>
         </div>
         <div class="order-item-properties dfRfsac">
@@ -263,8 +265,8 @@
                 <img src="/images/icons/kontrlata.png" class="orderThumbnailItemIcon">
                 <span class="order-itemTitle">Kontrłata</span>
             </div>
-            <div class="order-item-header-value">
-                <%=order.kontrlata.value.toFixed(2)%>
+            <div class="nettoBruttoActive order-item-header-value">
+                <%=order.kontrlata.value.toFixed(2)%> zł
             </div>
         </div>
         <div class="order-item-properties dfRfsac">
@@ -300,8 +302,8 @@
                 <img src="/images/icons/opal.png" class="orderThumbnailItemIcon">
                 <span class="order-itemTitle">Opał</span>
             </div>
-            <div class="order-item-header-value">
-                <%=order.paczkaOpalu.value.toFixed(2)%>
+            <div class="nettoBruttoActive order-item-header-value">
+                <%=order.paczkaOpalu.value.toFixed(2)%> zł
             </div>
         </div>
         <div class="order-item-properties dfRfsac">
@@ -330,8 +332,8 @@
                 <img src="/images/icons/transport.png" class="orderThumbnailItemIcon">
                 <span class="order-itemTitle">Transport</span>
             </div>
-            <div class="order-item-header-value">
-                <%=order.transport.value.toFixed(2)%>
+            <div class="nettoBruttoActive order-item-header-value">
+                <%=order.transport.value.toFixed(2)%> zł
             </div>
         </div>
         <div class="order-item-properties dfRfsac">
@@ -354,9 +356,9 @@
     </div>
     <%}%>
 </div>
+<script src="/js/nettoBrutto.js"></script>
 <%- include("../partials/footer.ejs")%>
 
 
 
-<script>
-</script>
+
