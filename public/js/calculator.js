@@ -1,12 +1,36 @@
 var i = 0;
 var allHebels = [];
 var isLata, isKontrlata, isOpal, isTransport;
-
+var distance = 0;
+var consolexd = document.getElementById("console");
 function updateInputs(){
     var inputs = document.querySelectorAll("input[type='text']");
     inputs.forEach(function(elemencik){
         elemencik.setAttribute("oninput", `changeComaToDot(this)`);
     })
+}
+
+var GoButton = document.getElementById("FinishButton");
+
+
+function dontLetThemGo(){
+    var allNecessaryInputs = document.querySelectorAll(".featureInput:not(.longFeatureInput):not(.mediumFeatureInput):not([disabled])");
+    console.log(allNecessaryInputs.length);
+    error = false;
+    allNecessaryInputs.forEach(function(elmnt){
+        if(!elmnt.value)
+            error = true;
+    })
+    if(error){
+        consolexd.classList.remove("displayNone");
+        console.log("Jest blad");
+        GoButton.disabled = true;
+    }
+    else if(!error){
+        consolexd.classList.add("displayNone");
+        console.log("Nie ma bledu");
+        GoButton.disabled = false;
+    }
 }
 
 var DrewnoPrice = document.getElementById("DrewnoPrice").value;
@@ -17,6 +41,9 @@ var KontrlataPrice = document.getElementById("KontrlataPrice").value;
 var OpalPrice = document.getElementById("OpalPrice").value;
 var TransportPrice = document.getElementById("TransportPrice").value;
 
+function scroll(){
+    window.scrollTo({ top: distance, behavior: 'smooth' });
+}
 function updatePricesOnPage(){
     DrewnoPrice = document.getElementById("DrewnoPrice").value;
     HebelPrice = document.getElementById("HebelPrice").value;
@@ -46,6 +73,7 @@ function zmienionoValue(elmnt){
     wartoscOstatecznaBrutto = Number(elmnt.value);
 
     updateNicePrice(elmntID, calculateNetto(wartoscOstatecznaBrutto), wartoscOstatecznaBrutto.toFixed(2));
+    dontLetThemGo();
 
 }
 
@@ -71,6 +99,7 @@ function calculateDrewnoKonstrukcyjnePrice(idToCount){
     document.getElementById(`Wartosc[${idToCount}]`).value = calculateBrutto(cenaPozycji);
 
     updateNicePrice(idToCount, cenaPozycji.toFixed(2), calculateBrutto(cenaPozycji));
+    dontLetThemGo();
 }
 
 function updateNicePrice(id, netto, brutto){
@@ -105,7 +134,7 @@ function calculateDeskaCalowkaPrice(idToCount){
     //TODO funkcja do zwracania ceny pozycji
     document.getElementById(`Wartosc[${idToCount}]`).value = calculateBrutto(cenaPozycji);
     updateNicePrice(idToCount, cenaPozycji, calculateBrutto(cenaPozycji));
-
+    dontLetThemGo();
 }
 
 function calculatePrice(idToCount){
@@ -113,6 +142,7 @@ function calculatePrice(idToCount){
     var cena = document.getElementById(`[${idToCount}][cena]`).value;
     document.getElementById(`Wartosc[${idToCount}]`).value = calculateBrutto(metrBiezacy * cena);
     updateNicePrice(idToCount, (metrBiezacy * cena).toFixed(2), calculateBrutto(metrBiezacy * cena));
+    dontLetThemGo();
 }
 
 
@@ -180,6 +210,7 @@ function disableDimensions(elmnt){
         document.getElementById(`[${idToCount}][ilosc]`).disabled = false;
 
     }
+
 }
 function checkIfNoDimensions(id){
     var x = document.getElementById(`[${id}][x]`).value;
@@ -199,10 +230,13 @@ function createNewObject(template){
     allHebels.push(hebel);
 
     i++;
+    scroll();
+    dontLetThemGo();
 }
 function changeComaToDot(elmnt){
     var textWithComa = elmnt.value;
     elmnt.value = textWithComa.replace(/,/g, '.');
+    dontLetThemGo();
 }
 
 function disableVolume(elmnt){
@@ -353,8 +387,9 @@ document.getElementById('drewnoKonstrukcyjne-button').onclick = function () {
          </div>
 
 `;
-
+    distance +=304.5;
     createNewObject(template);
+
 
 };
 
@@ -470,7 +505,7 @@ document.getElementById('calowka-button').onclick = function () {
                                 <div class="bi"></div>
                                 <div class="bi"></div>
                             </div>
-                        <input name="calowka[${i}][value]"id="Wartosc[${i}]" counter="${i}" oninput="zmienionoValue(this)" class="featureInput finalFeatureInput">
+                        <input name="calowka[${i}][value]" id="Wartosc[${i}]" counter="${i}" oninput="zmienionoValue(this)" class="featureInput finalFeatureInput">
                             <div class="di">
                                 <div class="bi"></div>
                                 <div class="bi"></div>
@@ -492,6 +527,7 @@ document.getElementById('calowka-button').onclick = function () {
                 <input type="checkbox" name="calowka[${i}][hleft]" id="[${i}][3]">
          </div>
 `;
+    distance +=304.5;
     createNewObject(template);
 
 };
@@ -573,6 +609,7 @@ document.getElementById('lata-button').onclick = function () {
     </div>        
 </div>
 `;
+    distance +=244.5;
     createNewObject(template);
 
     isLata = true;
@@ -656,6 +693,7 @@ document.getElementById('kontrlata-button').onclick = function () {
         
     </div>        
 </div>`;
+    distance +=244.5;
     createNewObject(template);
 
     isKontrlata = true;
@@ -738,6 +776,7 @@ document.getElementById('opal-button').onclick = function () {
     </div>        
 </div>
 `;
+    distance +=244.5;
     createNewObject(template);
 
     isOpal = true;
@@ -825,6 +864,7 @@ document.getElementById('transport-button').onclick = function () {
     
 </div>
 `;
+    distance += 244.5;
     createNewObject(template);
 
     isTransport = true;

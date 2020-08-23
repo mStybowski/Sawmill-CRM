@@ -153,7 +153,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     width: 270px;
 }
 .smallHeader{
@@ -202,7 +202,6 @@
 .deleteButton:hover{
 border-color: #84221f;
     color: #84221f;
-
 }
 /*=================*/
 input:disabled{
@@ -228,4 +227,20 @@ button.go{
     -webkit-appearance: none;
     font-family: 'Helvetica-Narrow', sans-serif;
     font-weight: bold;
+}
+
+/* CONSOLE */
+#console{
+    color: #e51e16;
+    font-family: "Lato", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    border: 1px solid #e51e16;
+    margin-bottom: 10px;
+    padding: 2px 30px;
+    border-radius: 4px;
+}
+
+.displayNone{
+    display: none;
 }
